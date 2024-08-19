@@ -104,7 +104,7 @@
         if (currentScrollY < lastScrollY && currentScrollY > 0) {
             // 스크롤이 위로 올라가고 화면이 최상단이 아닐 때
             hiddenHeader.classList.add('show');
-        } else if (currentScrollY === 0) {
+        } else if (currentScrollY === 0 || currentScrollY > lastScrollY) {
             // 화면이 최상단일 때 헤더 숨기기
             hiddenHeader.classList.remove('show');
         }
