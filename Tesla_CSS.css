@@ -1,0 +1,358 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+body {
+    font-family: "Inter", sans-serif;
+    color: #333333; 
+    line-height: 1.5; 
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {font-size:1em;}
+h1, h2, h3, h4, h5, h6, div, p, dl, body, dt, dd, ul, ol, li, form, fieldset, blockquote, address, table, thead, tbody, tfoot, tr, td, caption {
+    margin:0;
+    padding:0;
+}
+
+li {list-style:none;}
+
+
+
+
+header {
+    position: absolute;
+    display: block;
+    flex-direction: column;
+    width: 100%; 
+    height: 56px;  
+    font-weight: 500;      
+}
+ul > li:hover {
+    cursor: pointer;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+/* 기본 헤더 */
+.headermain {   
+    position: relative;
+    width: 100%;
+    height: 100%;     
+    display: flex;      
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 500;
+}
+
+.logosvg {
+    filter: invert(100%) brightness(100%) contrast(100%);
+}
+
+/* 로고 공통 */
+.logo {
+    justify-content: center;
+    display: block;
+    padding-left: 32px; 
+}
+
+h1 {
+    display: flex;   
+    height: 100%; 
+    margin: 0;  
+}
+
+h1 > a { 
+    display: flex;
+    align-items: center;     
+    font-size: 0;
+    width: 120px;
+    height: 24px;  
+    padding: 0 16px; 
+}
+
+
+/* 숨겨진 헤더 */
+.headerhiddenmain {
+    visibility: hidden;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 56px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 0;    
+    background-color: white;
+    z-index: 1000;
+    transition: visibility 0.3s, opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+
+/* 숨겨진 헤더가 보일 때 */
+.headerhiddenmain.show {
+    visibility: visible;
+    opacity: 1;
+    color: black;
+}
+
+.headerhiddenmain > .menu > li > button > span {
+    color: black;
+}
+
+
+
+
+/* 마우스 호버 시 숨겨진 헤더 표시 */
+
+.menu > li > button:hover ~ .headerhiddenmain {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    box-sizing: border-box; 
+}
+/*.black이 아닌 .menu ... 으로 지정해서 선택 시, hover 일 때 기본헤더와 히든헤더 모두 백그라운드 컬러가 나타나서 깜빡이는 듯한 효과가 나타남.  */
+.black > li > button:hover { 
+    background-color: #e2e3e3;
+    border-radius: 8px;
+}
+
+/* 숨김 헤더 유틸 */
+.headerhiddenutil {
+    font-size: 0px;
+    /* line-height: 20px; */
+}
+
+.headerhiddenutil > ul {    
+    display: flex;   
+}
+
+.headerhiddenutil > ul > li {
+    width: 32px;
+    margin-right: 4px;
+}
+
+.headerhiddenutil > ul > li > a {
+    display: block;     
+    width: 32px;    
+}
+
+.utilmenu {
+    position: absolute;
+    right : 0;
+    width: 70px;
+    height: 32px;
+    background-color: transparent;
+    border: none;
+}
+
+.headermain > .utilmenu {
+    border: 1px solid white;
+    border-style: none;
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+.utilmenu > span {
+    color : white;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+}
+
+
+/* width 1200 px  이상일 경우 Header */
+@media screen and (max-width: 1199px) {
+
+.menu {
+    visibility: hidden;
+}
+
+.utilnav {
+    visibility: hidden;
+}
+
+.headerhiddenmain > .utilmenu > span {
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+}
+}
+
+
+@media screen and (min-width: 1200px){ 
+    /* 헤더메인메뉴 공통 */
+.menu {    
+    display: flex; 
+}
+
+.menu > li {      
+    display: flex; 
+}
+
+.menu > li > button {      
+    border: 1px solid transparent;    
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    padding: 4px 16px;
+    font: bold 14px "Inter", sans-serif;
+    font-weight: 500;       
+}
+
+.menu > li > button > span {       
+    color: white;
+    border: none;   
+    text-decoration: none;
+}
+
+/* 유틸 공통 */
+.utilnav {
+    position: static;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    font-size: 0px;
+}
+
+.utilnav > ul {     
+    display: flex;  
+    align-items: center;  
+    height: 100%;   
+    padding-right: 32px;
+}
+
+.utilnav > ul > li{
+    display: flex;
+    justify-content: center;    
+    align-items: center;     
+}
+
+.utilnav > ul > .help {   
+     width: 36px;
+     height: 33px;  
+}
+
+.utilnav > ul > .global {   
+     width: 36px;
+     height: 33px;  
+}
+
+.utilnav > ul > .user {   
+     width: 48px;
+     height: 33px; 
+}
+
+.utilnav > ul > li > a {
+    display: block;     
+    justify-content: center;    
+    align-items: center;   
+    width: 32px;
+    margin-right: 4px;    
+}
+
+
+.utilnav > ul > li > a > img {
+    width: 24px;
+    height: 24px;
+}
+
+.utilmenu {
+    visibility: hidden;    
+}
+
+}
+
+
+/* 화면 메인 */
+
+main > .bg{
+    position: relative;
+}
+
+main > .bg > picture {
+    display: flex;
+}
+
+picture > img {
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;    
+}
+
+.textbox {
+    position: absolute;
+    width: 100%;
+    z-index: 200;      
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    top: 0;
+    margin-top: 160px;
+}
+.bg_title {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.bg_subtitle {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.bg_subtitle > a {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.textbox > p {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+
+
+/* width 1200 px  이상일 경우 main */
+@media screen and (min-width: 1200px) {
+    .bg_title {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    
+    .bg_subtitle {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    
+    .bg_subtitle > a {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+    
+    .textbox > p {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+}
+
+
+
+
+

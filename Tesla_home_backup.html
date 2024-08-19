@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Tesla_CSS.css">
+</head>
+<body>
+
+<header>                  
+    <div class="headermain">
+        <div class="logo">
+            <h1 class="logowhite"><a href=""><img src="./img/siteLogo.svg" alt="" class="logosvg">Tesla</a></h1>
+        </div> 
+        <ul class="menu white">
+            <li><button><span>Vehicles</span></button></li>
+            <li><button><span>Energy</span></button></li>
+            <li><button><span>Charging</span></button></li>
+            <li><button><span>Discover</span></button></li>
+            <li><button><span>Shop</span></button></li>            
+        </ul>
+        <div class="headerutil">
+            <ul>
+                <li class="help"><a href=""><img src="./img/help.svg" alt="" class="logosvg">help</a></li>
+                <li class="global"><a href=""><img src="./img/global.svg" alt="" class="logosvg">global/</a></li>
+                <li class="user"><a href=""><img src="./img/person.svg" alt="" class="logosvg">user</a></li>
+            </ul>
+        </div>
+    </div>   
+    
+    <div class="headerhiddenmain">
+        <div class="logo">
+            <h1 class="logoblack"><a href=""><img src="./img/siteLogo.svg" alt="">Tesla</a></h1> 
+        </div>
+        <ul class="menu black">
+            <li><button><span>Vehicles</span></button></li>
+            <li><button><span>Energy</span></button></li>
+            <li><button><span>Charging</span></button></li>
+            <li><button><span>Discover</span></button></li>
+            <li><button><span>Shop</span></button></li>  
+        </ul>
+        <div class="headerhiddenutil">
+            <ul class="headerutil">
+                <li class="help"><a href=""><img src="./img/help.svg" alt="" >help</a></li>
+                <li class="global"><a href=""><img src="./img/global.svg" alt="">global/</a></li>
+                <li class="user"><a href=""><img src="./img/person.svg" alt="">user</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="main_model3">
+        <picture>
+            <img src="./img/Homepage-Model-3-Desktop-LHD-v2.jpg" alt="">
+        </picture>
+    </div>
+    <div class="main_modelY">
+        <picture>
+            <img src="./img/Homepage-Model-Y-Desktop-Global.jfif" alt="">
+        </picture>
+    </div>
+</main>
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+    const hiddenHeader = document.querySelector('.headerhiddenmain');
+    const menuItems = document.querySelectorAll('.menu > li');
+    let lastScrollY = window.scrollY;
+
+        // 스크롤 이벤트를 통해 헤더 표시/숨기기 제어
+        window.addEventListener('scroll', function() {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY < lastScrollY && currentScrollY > 0) {
+            // 스크롤이 위로 올라가고 화면이 최상단이 아닐 때
+            hiddenHeader.classList.add('show');
+        } else if (currentScrollY === 0) {
+            // 화면이 최상단일 때 헤더 숨기기
+            hiddenHeader.classList.remove('show');
+        }
+
+        lastScrollY = currentScrollY;
+    });
+
+    // 메인 헤더 메뉴에 마우스 호버 시 숨겨진 헤더 표시
+    menuItems.forEach(function(item) {
+        item.addEventListener('mouseenter', function() {
+            hiddenHeader.classList.add('show');
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            
+            // 화면이 최상단일 때 헤더 숨기기            
+            hiddenHeader.classList.remove('show');
+            // }
+        });
+    });
+});
+
+
+
+</script>
+    
+
+
+</body>
+</html>
