@@ -37,20 +37,71 @@
         <ul class="menu black">
             <li class="vehiclesmenu"><button><span>Vehicles</span></button>
                 <div class="vehicles submenu">
-                    <div class="carlist"></div>
-                    <ul class="productlist"></ul>
+                    <div class="carlist">
+                        <!-- 차량 관련 내용 -->
+                    </div>
+                    <ul class="productlist">
+                        <li><a href="#">Model S</a></li>
+                        <li><a href="#">Model 3</a></li>
+                        <li><a href="#">Model X</a></li>
+                        <li><a href="#">Model Y</a></li>
+                        <li><a href="#">Cybertruck</a></li>
+                        <li><a href="#">Help Me Choose</a></li>
+                    </ul>
                 </div>
             </li>
             <li class="energymenu"><button><span>Energy</span></button>
                 <div class="energy submenu">
-                    <div class="energylist"></div>
-                    <ul class="productlist"></ul>
+                    <div class="energylist">
+                        <!-- 에너지 관련 내용 -->
+                    </div>
+                    <ul class="productlist">
+                        <li><a href="#">Solar Panels</a></li>
+                        <li><a href="#">Solar Roof</a></li>
+                        <li><a href="#">Powerwall</a></li>
+                        <li><a href="#">Megapack</a></li>
+                    </ul>
                 </div>
             </li>
-            <li><button><span>Charging</span></button></li>
-            <li><button><span>Discover</span></button></li>
-            <li><button><span>Shop</span></button></li>  
+            <li class="chargingmenu"><button><span>Charging</span></button>
+                <div class="charging submenu">
+                    <div class="charginglist">
+                        <!-- 충전 관련 내용 -->
+                    </div>
+                    <ul class="productlist">
+                        <li><a href="#">Charging</a></li>
+                        <li><a href="#">Home Charging</a></li>
+                        <li><a href="#">Supercharging</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="discovermenu"><button><span>Discover</span></button>
+                <div class="discover submenu">
+                    <div class="discoverlist">
+                        <!-- Discover 관련 내용 -->
+                    </div>
+                    <ul class="productlist">
+                        <li>Tesla News</li>
+                        <li>Impact</li>
+                        <li>Events</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="shopmenu"><button><span>Shop</span></button>
+                <div class="shop submenu">
+                    <div class="shoplist">
+                        <!-- 쇼핑 관련 내용 -->
+                    </div>
+                    <ul class="productlist">
+                        <li><a href="#">Charging</a></li>
+                        <li><a href="#">Vehicle Accessories</a></li>
+                        <li><a href="#">Apparel</a></li>
+                        <li><a href="#">Lifestyle</a></li>
+                    </ul>
+                </div>
+            </li>  
         </ul>
+        
         <div class="utilnav">
             <ul class="util">
                 <li class="help"><a href=""><img src="./img/help.svg" alt="" >help</a></li>
@@ -102,7 +153,8 @@
 
 <script>
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() { 
+    // DOM 요소가 완전히 로드된 이후, 이벤트 발생
     const hiddenHeader = document.querySelector('.headerhiddenmain');
     const menuItems = document.querySelectorAll('.menu > li');
     const submenus = document.querySelectorAll('.submenu');
@@ -155,33 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     });
 });
-      
-        // item.addEventListener('mouseleave', function() {
-        //     const currentScrollY = window.scrollY;
-        //     if (currentScrollY === 0 ) {
-        //         // 화면이 최상단일 때만 헤더 숨기기
-        //         hiddenHeader.classList.remove('show');
-        //         submenus.forEach(function(submenu) {
-        //             submenu.style.visibility = 'hidden';
-        //             submenu.style.opacity = '0';
-        //     });
-        //     } else {
-        //         // 스크롤이 최상단이 아닐 때
-        //         submenus.forEach(function(submenu) {
-        //             submenu.style.visibility = 'hidden';
-        //             submenu.style.opacity = '0';
-        //         });
-        //         // 헤더는 남아있도록 설정 (hiddenHeader는 유지)
-            // }
-       
-    
-
-
-
-
+ 
 </script>
-    
-
-
 </body>
 </html>
