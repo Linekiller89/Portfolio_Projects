@@ -100,24 +100,72 @@ h1 > a {
     color: black;
 }
 
+.headerhiddenmain.show > ul > li > div{
+    visibility: hidden;
+    opacity: 0;
+}
+
 .headerhiddenmain > .menu > li > button > span {
     color: black;
 }
 
 
-
-
 /* 마우스 호버 시 숨겨진 헤더 표시 */
-
 .menu > li > button:hover ~ .headerhiddenmain {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
     height: 100%;
     width: 100%;
-    border-radius: 8px;
-    box-sizing: border-box; 
 }
+
+/* 서브메뉴 세팅 */
+.submenu {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    position: absolute;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    margin-top: 56px;
+    background-color: white;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    pointer-events: none; 
+}
+
+.vehicles {
+    height: 513px;
+}
+
+.energy {
+    height: 412px;
+}
+
+/* 마우스 호버 시 서브메뉴 표시 */
+.menu > .vehiclesmenu:hover .vehicles,
+.menu > .energymenu:hover .energy {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto; 
+}
+
+.menu > .vehiclesmenu:hover ~ .vehicles,
+ .vehicles
+ {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu > .energymenu:hover ~ .energy, .energy
+{
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
 /*.black이 아닌 .menu ... 으로 지정해서 선택 시, hover 일 때 기본헤더와 히든헤더 모두 백그라운드 컬러가 나타나서 깜빡이는 듯한 효과가 나타남.  */
 .black > li > button:hover { 
     background-color: #e2e3e3;
@@ -125,25 +173,6 @@ h1 > a {
 }
 
 /* 숨김 헤더 유틸 */
-.headerhiddenutil {
-    font-size: 0px;
-    /* line-height: 20px; */
-}
-
-.headerhiddenutil > ul {    
-    display: flex;   
-}
-
-.headerhiddenutil > ul > li {
-    width: 32px;
-    margin-right: 4px;
-}
-
-.headerhiddenutil > ul > li > a {
-    display: block;     
-    width: 32px;    
-}
-
 .utilmenu {
     position: absolute;
     right : 0;
