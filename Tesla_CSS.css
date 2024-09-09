@@ -136,7 +136,6 @@ header {
 .vehicleslistbox {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-gap: 20px;
     padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
     width: 94%;
     height: 100%;
@@ -163,9 +162,9 @@ header {
 }
 
 .charginglistbox {
+    border: 1px solid blue;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-gap: 20px;
     padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
     width: 94%;
     height: 100%;
@@ -175,19 +174,43 @@ header {
 
 /* vehiclesproductlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
 .chargingproductlist {
-    grid-column: 2 / span 7;    
+    border: 1px solid red;   
     padding: 16px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4개의 열로 설정 */
-    grid-template-rows: repeat(2, 1fr); /* 2줄로 설정 */
-    gap: 10px;
+    grid-column: 1 / span 7; 
 }
 
 /* vehiclesproductlist 내부 항목 스타일 */
 .chargingproductlist li {
+    border: 1px solid blue;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+#subcharging {
+    grid-column: 3 / span 2; 
+}
+
+#homecharging {
+    grid-column: 5 / span 1; 
+}
+
+#supercharging {
+    grid-column: 6 / span 2; 
+}
+
+.charging-vertical-line {
+    grid-column: 8 / span 1;
+    border-left: 1px solid #e0e0e0;
+    height: 100%;
+    justify-self: center;
+}
+
+.charging-info-box {
+    grid-column: 9 / span 2;
+    padding: 16px;
+    background-color: white;
 }
 
 /* 살펴보기 메뉴 */
@@ -222,6 +245,13 @@ header {
 
 /* Shop 메뉴 */
 
+
+.shoplistbox {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .shopproductlist {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -233,6 +263,8 @@ header {
 }
 
 .shopproductlist li {
+    border: 1px solid blue;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
