@@ -121,7 +121,7 @@ header {
     width: 100vw;
     padding: 0 28px 48px;
     background-color: white;
-    transition: opacity 0.3s ease, height 0.3s ease;
+    transition: opacity 0.5s ease, height 0.5s ease;
     z-index: 15;
 }
 
@@ -133,8 +133,7 @@ header {
 }
 
 /* 그리드 레이아웃 */
-.listbox {
-    border: 1px solid grey;
+.vehicleslistbox {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 20px;
@@ -145,9 +144,8 @@ header {
     margin: 0 auto; /* 수평 중앙 정렬 */
 }
 
-/* productlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
-.productlist {
-    border: 1px solid black;
+/* vehiclesproductlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
+.vehiclesproductlist {
     grid-column: 2 / span 7;    
     padding: 16px;
     display: grid;
@@ -156,19 +154,113 @@ header {
     gap: 10px;
 }
 
-/* productlist 내부 항목 스타일 */
-.productlist li {
+/* vehiclesproductlist 내부 항목 스타일 */
+.vehiclesproductlist li {
     border: 1px solid blue;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.charginglistbox {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+    padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
+    width: 94%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto; /* 수평 중앙 정렬 */
+}
+
+/* vehiclesproductlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
+.chargingproductlist {
+    grid-column: 2 / span 7;    
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4개의 열로 설정 */
+    grid-template-rows: repeat(2, 1fr); /* 2줄로 설정 */
+    gap: 10px;
+}
+
+/* vehiclesproductlist 내부 항목 스타일 */
+.chargingproductlist li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 살펴보기 메뉴 */
+
+.discoverlistbox {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 64px 48px 16px; 
+    width: 94%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.discoverproductlist li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customerresources {
+    grid-column: 4 / span 1; 
+}
+
+.locationservices {
+    grid-column: 6 / span 1; 
+}
+
+.companyinfo {
+    grid-column: 8 / span 1; 
+}
+
+/* Shop 메뉴 */
+
+.shopproductlist {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 64px 48px 16px; 
+    width: 94%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.shopproductlist li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#chargingacc {
+    grid-column: 3 / span 2; 
+}
+
+#caracc {
+    grid-column: 5 / span 2; 
+}
+
+#clothingacc {
+    grid-column: 7 / span 2; 
+}
+
+#lifestyleacc {
+    grid-column: 9 / span 2; 
+}
+
+
+
+
 /* info-box 스타일 */
 .info-box {
     grid-column: 10 / span 3;
     padding: 16px;
-    border: 1px solid red;
     background-color: white;
 }
 
@@ -247,9 +339,9 @@ header {
     filter: brightness(0) invert(1); /* 흰색 기본 설정 */
 }
 
-/* 미디어 쿼리: 가로 크기 1440px 미만에서 productlist를 3열 2줄로 변경 */
+/* 미디어 쿼리: 가로 크기 1440px 미만에서 vehiclesproductlist를 3열 2줄로 변경 */
 @media screen and (max-width: 1439px) {
-    .productlist {
+    .vehiclesproductlist {
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
     }

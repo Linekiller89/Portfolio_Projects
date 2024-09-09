@@ -74,9 +74,9 @@ document.addEventListener("DOMContentLoaded", function () {
       let whiteboxHeight;
       if (item.classList.contains("vehicles")) {
         whiteboxHeight = 552;
-      } else if (item.classList.contains("charging") || item.classList.contains("energy")) {
+      } else if (item.classList.contains("charging") || item.classList.contains("discover")) {
         whiteboxHeight = 360;
-      } else if (item.classList.contains("discover")) {
+      } else if (item.classList.contains("shop")) {
         whiteboxHeight = 336;
       }
 
