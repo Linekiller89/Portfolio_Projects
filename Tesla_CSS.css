@@ -26,7 +26,7 @@ header {
 
 /* 기본 헤더 */
 .mainheader {
-    position: absolute;
+    position: fixed;
     display: flex;
     width: 100%;
     height: 56px;
@@ -39,6 +39,24 @@ header {
     z-index: 1000;
     transition: transform 0.2s, visibility 0.2s, opacity 0.2s ease-in-out;
     opacity: 1;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-100%);
+}
+
+.scrolled .logobox a img {
+    filter: brightness(0) invert(0); /* 검정색 */
+}
+
+.scrolled .menubox > li > button > span {
+    color: black;
+}
+
+.scrolled .utilnav > li > a > img {
+    filter: brightness(0) invert(0); /* 검정색 */
 }
 
 /* 로고 */
@@ -67,8 +85,7 @@ header {
 .menubox {
     display: flex;
     align-items: center;
-    height: 100%;
-    cursor: pointer;
+    height: 100%;    
 }
 
 .menubox > li {
@@ -85,6 +102,7 @@ header {
     padding: 4px 16px;
     font: bold 14px "Inter", sans-serif;
     font-weight: 500;
+    cursor: pointer;
 }
 
 .menubox > li > button > span {
@@ -182,7 +200,7 @@ header {
 }
 
 .logobox, .menubox, .utilbox, .utilmenu {
-    z-index: 10;
+    z-index: 100;
 }
 
 /* 유틸메뉴 */
