@@ -1,149 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tesla</title>
+    <title>테슬라</title>
     <link rel="stylesheet" href="./Tesla_CSS.css" />
   </head>
   <body>
     <header>
-      <div class="headermain">
-        <div class="logo">
-          <h1 class="logowhite">
-            <a href=""><img src="./img/siteLogo.svg" alt="" class="logosvg" />Tesla</a>
+      <div class="mainheader">
+        <div class="logobox">
+          <h1 class="logo">
+            <a href=""><img src="./img/siteLogo.svg" alt="" />테슬라</a>
           </h1>
         </div>
-        <ul class="menu white">
-          <li>
-            <button><span>Vehicles</span></button>
-          </li>
-          <li>
-            <button><span>Energy</span></button>
-          </li>
-          <li>
-            <button><span>Charging</span></button>
-          </li>
-          <li>
-            <button><span>Discover</span></button>
-          </li>
-          <li>
-            <button><span>Shop</span></button>
-          </li>
-        </ul>
-        <div class="utilnav">
-          <ul class="util">
-            <li class="help">
-              <a href=""><img src="./img/help.svg" alt="" class="logosvg" />help</a>
-            </li>
-            <li class="global">
-              <a href=""><img src="./img/global.svg" alt="" class="logosvg" />global/</a>
-            </li>
-            <li class="user">
-              <a href=""><img src="./img/person.svg" alt="" class="logosvg" />user</a>
-            </li>
-          </ul>
-        </div>
-        <button class="utilmenu"><span>Menu</span></button>
-      </div>
-
-      <div class="headerhiddenmain">
-        <div class="logo">
-          <h1 class="logoblack">
-            <a href=""><img src="./img/siteLogo.svg" alt="" />Tesla</a>
-          </h1>
-        </div>
-        <ul class="menu black">
-          <li class="vehiclesmenu">
-            <button><span>Vehicles</span></button>
-            <div class="vehicles submenu">
+        <ul class="menubox">
+          <li class="menu vehicles">
+            <button><span>차량</span></button>
+            <div class="vehiclessub submenu">
               <div class="listbox">
                 <ul class="productlist">
-                  <li><a href="#">Model S</a></li>
-                  <li><a href="#">Model 3</a></li>
-                  <li><a href="#">Model X</a></li>
-                  <li><a href="#">Model Y</a></li>
-                  <li><a href="#">Cybertruck</a></li>
-                  <li><a href="#">Help Me Choose</a></li>
+                  <li><a href="#">모델 S</a></li>
+                  <li><a href="#">모델 3</a></li>
+                  <li><a href="#">모델 X</a></li>
+                  <li><a href="#">모델 Y</a></li>
+                  <li><a href="#">사이버트럭</a></li>
                 </ul>
-                <div class="menulist">
-                  <ul>
-                    <li>Inventory</li>
-                    <li>Used Cars</li>
-                    <li>Demo Drive</li>
-                    <li>Trade-in</li>
-                    <li>Compare</li>
-                    <li>Help Me Charge</li>
-                    <li>Fleet</li>
-                    <li>Semi</li>
-                    <li>Roadster</li>
+                <div class="vertical-line"></div>
+                <div class="info-box">
+                  <ul class="info-list">
+                    <li><a href="#">인벤토리</a></li>
+                    <li><a href="#">인증 중고차</a></li>
+                    <li><a href="#">시승 신청</a></li>
+                    <li><a href="#">보상 판매</a></li>
+                    <li><a href="#">법인 차량</a></li>
+                    <li><a href="#">Roadster</a></li>
                   </ul>
                 </div>
               </div>
             </div>
           </li>
-          <li class="energymenu">
-            <button><span>Energy</span></button>
-            <div class="energy submenu">
-              <div class="energylist"></div>
+          <li class="menu charging">
+            <button><span>충전</span></button>
+            <div class="chargingsub submenu">
               <ul class="productlist">
-                <li><a href="#">Solar Panels</a></li>
-                <li><a href="#">Solar Roof</a></li>
-                <li><a href="#">Powerwall</a></li>
-                <li><a href="#">Megapack</a></li>
+                <li><a href="#">충전</a></li>
+                <li><a href="#">홈 차징</a></li>
+                <li><a href="#">슈퍼차저</a></li>
               </ul>
             </div>
           </li>
-          <li class="chargingmenu">
-            <button><span>Charging</span></button>
-            <div class="charging submenu">
-              <div class="charginglist"></div>
-              <ul class="productlist">
-                <li><a href="#">Charging</a></li>
-                <li><a href="#">Home Charging</a></li>
-                <li><a href="#">Supercharging</a></li>
-              </ul>
-            </div>
+          <li class="menu energy">
+            <button><span>살펴보기</span></button>
+            <div class="energysub submenu"></div>
           </li>
-          <li class="discovermenu">
-            <button><span>Discover</span></button>
-            <div class="discover submenu">
-              <div class="discoverlist"></div>
-              <ul class="productlist">
-                <li>Tesla News</li>
-                <li>Impact</li>
-                <li>Events</li>
-              </ul>
-            </div>
-          </li>
-          <li class="shopmenu">
+
+          <li class="menu discover">
             <button><span>Shop</span></button>
-            <div class="shop submenu">
-              <div class="shoplist"></div>
+            <div class="discoversub submenu">
               <ul class="productlist">
-                <li><a href="#">Charging</a></li>
-                <li><a href="#">Vehicle Accessories</a></li>
-                <li><a href="#">Apparel</a></li>
-                <li><a href="#">Lifestyle</a></li>
+                <li>111</li>
+                <li>222</li>
+                <li>333</li>
+                <li>444</li>
               </ul>
             </div>
           </li>
         </ul>
 
-        <div class="utilnav">
-          <ul class="util">
+        <div class="whitebox"></div>
+        <!-- whitebox 추가 -->
+
+        <div class="utilbox">
+          <ul class="utilnav">
             <li class="help">
-              <a href=""><img src="./img/help.svg" alt="" />help</a>
+              <a href=""><img src="./img/help.svg" alt="" />고객 지원</a>
             </li>
             <li class="global">
-              <a href=""><img src="./img/global.svg" alt="" />global/</a>
+              <a href=""><img src="./img/global.svg" alt="" />국가/언어</a>
             </li>
             <li class="user">
-              <a href=""><img src="./img/person.svg" alt="" />user</a>
+              <a href=""><img src="./img/person.svg" alt="" />계정</a>
             </li>
           </ul>
         </div>
-        <button class="utilmenu"><span>Menu</span></button>
+        <!-- <button class="utilmenu"><span>메뉴</span></button> -->
       </div>
     </header>
 
@@ -155,7 +96,7 @@
         <div class="textbox">
           <h1 class="bg_title">Model 3</h1>
           <h3 class="bg_subtitle">
-            <a href="">1.99% APR Financing Ending August 31</a>
+            <a href="#">1.99% APR Financing Ending August 31</a>
           </h3>
           <p><span>From $34,990</span><sup>1</sup></p>
         </div>
@@ -171,7 +112,7 @@
         <div class="textbox">
           <h1 class="bg_title">Model Y</h1>
           <h3 class="bg_subtitle">
-            <a href="">1.99% APR Financing Ending August 31</a>
+            <a href="#">1.99% APR Financing Ending August 31</a>
           </h3>
           <p><span>From $31,490</span><sup>2</sup></p>
         </div>

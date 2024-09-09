@@ -1,82 +1,32 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+KR:wght@100..900&display=swap');
 
 body {
     font-family: "Inter", sans-serif;
-    color: #333333; 
-    line-height: 1.5; 
+    color: #333333;
+    line-height: 1.5;
     font-size: 16px;
 }
 
-h1, h2, h3, h4, h5, h6 {font-size:1em;}
+h1, h2, h3, h4, h5, h6 {font-size: 1em;}
 h1, h2, h3, h4, h5, h6, div, p, dl, body, dt, dd, ul, ol, li, form, fieldset, blockquote, address, table, thead, tbody, tfoot, tr, td, caption {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
-li {list-style:none;}
+li {list-style: none;}
 
 header {
     position: absolute;
-    display: block;
+    display: flex;
     flex-direction: column;
-    width: 100%; 
-    height: 56px;  
-    font-weight: 500;    
-}
-ul > li:hover {
-    cursor: pointer;
-}
-
-button:hover {
-    cursor: pointer;
+    width: 100%;
+    height: 56px;
+    font-weight: 500;
 }
 
 /* 기본 헤더 */
-.headermain {   
-    border: 1px solid black;
-
-    position: relative;
-    width: 100%;
-    height: 100%;     
-    display: flex;      
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 500;
-}
-
-.logosvg {
-    filter: invert(100%) brightness(100%) contrast(100%);
-}
-
-/* 로고 공통 */
-.logo {
-    justify-content: center;
-    display: block;
-    padding-left: 32px; 
-}
-
-h1 {
-    display: flex;   
-    height: 100%; 
-    margin: 0;  
-}
-
-h1 > a { 
-    display: flex;
-    align-items: center;     
-    font-size: 0;
-    width: 120px;
-    height: 24px;  
-    padding: 0 16px; 
-}
-
-/* 숨겨진 헤더 */
-.headerhiddenmain {
-    border: 1px solid black;
-
-    visibility: hidden;
-    position: fixed;
+.mainheader {
+    position: absolute;
     display: flex;
     width: 100%;
     height: 56px;
@@ -84,210 +34,214 @@ h1 > a {
     justify-content: space-between;
     align-items: center;
     top: 0;
-    left: 0;    
-    background-color: white;
+    left: 0;
+    background-color: transparent;
     z-index: 1000;
     transition: transform 0.2s, visibility 0.2s, opacity 0.2s ease-in-out;
-    opacity: 0;
-}
-
-/* 숨겨진 헤더가 보일 때 */
-.headerhiddenmain.show {
-    visibility: visible;
     opacity: 1;
-    color: black;
 }
 
-.headerhiddenmain > .menu > li > button > span {
-    color: black;
+/* 로고 */
+.logobox {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 28px;
+    background-color: transparent;
 }
 
-/* 서브메뉴 세팅 */
+.logobox a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-size: 0px;
+}
+
+.logobox a > img {
+    width: 100px;
+    height: 24px;
+    filter: brightness(0) invert(1); /* 흰색으로 기본 설정 */
+}
+
+/* 메뉴 */
+.menubox {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+}
+
+.menubox > li {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.menubox > li > button {
+    border: 1px solid transparent;
+    background-color: transparent;
+    height: 32px;
+    width: 100%;
+    padding: 4px 16px;
+    font: bold 14px "Inter", sans-serif;
+    font-weight: 500;
+}
+
+.menubox > li > button > span {
+    color: white; /* 기본적으로 흰색 */
+    border: none;
+    text-decoration: none;
+}
+
+/* 서브메뉴 */
 .submenu {
-    border: 1px solid black;
     visibility: hidden;
     opacity: 0;
-    transform: translateY(0px);
-    display: flex;
-    position: absolute;
-    width: 100%;
+    position: absolute;    
+    top: 56px;
     left: 0;
-    top: 0;
-    margin-top: 56px;
-    padding : 0px 28px 48px;
+    width: 100vw;
+    padding: 0 28px 48px;
     background-color: white;
-    transition: transform 0.5s, visibility 0.1s, opacity 0.1s ease-in-out;
+    transition: opacity 0.3s ease, height 0.3s ease;
+    z-index: 15;
 }
 
-
-/* 메뉴 높이 설정 */
-.vehicles {
-    height: 513px;
-}
-
-.energy {
-    height: 412px;
-}
-
-.charging {
-    height: 412px;
-}
-
-.discover {
-    height: 454px;
-}
-
-.shop {
-    height: 336px;
-}
-
-/* 마우스 호버 시 서브메뉴 표시 */
-.menu > .vehiclesmenu:hover .vehicles,
-.menu > .energymenu:hover .energy,
-.menu > .chargingmenu:hover .charging,
-.menu > .discovermenu:hover .discover,
-.menu > .shopmenu:hover .shop {
+/* 서브메뉴 보일 때 */
+.submenu.show {
     visibility: visible;
     opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto; 
+    height: auto; /* 서브메뉴의 높이를 설정 */
 }
 
-.black > li > button:hover { 
-    background-color: #e2e3e3;
-    border-radius: 8px;
+/* 그리드 레이아웃 */
+.listbox {
+    border: 1px solid grey;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+    padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
+    width: 94%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto; /* 수평 중앙 정렬 */
 }
 
-/* 숨김 헤더 유틸 */
+/* productlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
+.productlist {
+    border: 1px solid black;
+    grid-column: 2 / span 7;    
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4개의 열로 설정 */
+    grid-template-rows: repeat(2, 1fr); /* 2줄로 설정 */
+    gap: 10px;
+}
+
+/* productlist 내부 항목 스타일 */
+.productlist li {
+    border: 1px solid blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* info-box 스타일 */
+.info-box {
+    grid-column: 10 / span 3;
+    padding: 16px;
+    border: 1px solid red;
+    background-color: white;
+}
+
+/* 세로선 스타일 */
+.vertical-line {
+    grid-column: 9 / span 1;
+    border-left: 1px solid #e0e0e0;
+    height: 100%;
+    justify-self: center;
+}
+
+/* whitebox 관련 */
+.whitebox {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 56px;
+    background-color: white;
+    transition: top 0.3s ease-in-out, height 0.3s ease-in-out;
+    z-index: 1;
+    opacity: 0;
+}
+
+/* whitebox 내려올 때 */
+.whitebox.open {
+    top: 0;
+    opacity: 1;
+}
+
+.logobox, .menubox, .utilbox, .utilmenu {
+    z-index: 10;
+}
+
+/* 유틸메뉴 */
 .utilmenu {
     position: absolute;
-    right : 0;
+    right: 0;
     width: 70px;
     height: 32px;
     background-color: transparent;
     border: none;
 }
 
-.headermain > .utilmenu {
-    border: 1px solid white;
-    border-style: none;
-    border-radius: 4px;
-    background-color: transparent;
-}
-
 .utilmenu > span {
-    color : white;
+    color: black;
     font-size: 14px;
     font-weight: 500;
     font-family: "Inter", sans-serif;
 }
 
-/* width 1200 px  이상일 경우 Header */
-@media screen and (max-width: 1199px) {
-    .menu {
-        visibility: hidden;
-    }
+/* 유틸 박스 */
+.utilbox {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
 
-    .utilnav {
-        visibility: hidden;
-    }
+.utilnav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-right: 32px;
+    font-size: 0px;
+}
 
-    .headerhiddenmain > .utilmenu > span {
-        color: black;
-        font-size: 14px;
-        font-weight: 500;
-        font-family: "Inter", sans-serif;
+.utilnav > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.utilnav > li > a > img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1); /* 흰색 기본 설정 */
+}
+
+/* 미디어 쿼리: 가로 크기 1440px 미만에서 productlist를 3열 2줄로 변경 */
+@media screen and (max-width: 1439px) {
+    .productlist {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
     }
 }
 
-@media screen and (min-width: 1200px){ 
-    /* 헤더메인메뉴 공통 */
-    .menu {    
-        display: flex; 
-        align-items: center;
-        height: 100%;
-    }
-
-    .menu > li {   
-        display: flex; 
-        height: 100%;
-        align-items: center;
-    }
-
-    .menu > li > button {      
-        border: 1px solid transparent;    
-        background-color: transparent;
-        height: 32px;
-        width: 100%;
-        padding: 4px 16px;
-        font: bold 14px "Inter", sans-serif;
-        font-weight: 500;       
-    }
-
-    .menu > li > button > span {       
-        color: white;
-        border: none;   
-        text-decoration: none;
-    }
-
-    /* 유틸 공통 */
-    .utilnav {
-        position: static;
-        display: flex;
-        height: 100%;
-        justify-content: center;
-        font-size: 0px;
-    }
-
-    .utilnav > ul {     
-        display: flex;  
-        align-items: center;  
-        height: 100%;   
-        padding-right: 32px;
-    }
-
-    .utilnav > ul > li{
-        display: flex;
-        justify-content: center;    
-        align-items: center;     
-    }
-
-    .utilnav > ul > .help {   
-        width: 36px;
-        height: 33px;  
-    }
-
-    .utilnav > ul > .global {   
-        width: 36px;
-        height: 33px;  
-    }
-
-    .utilnav > ul > .user {   
-        width: 48px;
-        height: 33px; 
-    }
-
-    .utilnav > ul > li > a {
-        display: block;     
-        justify-content: center;    
-        align-items: center;   
-        width: 32px;
-        margin-right: 4px;    
-    }
-
-    .utilnav > ul > li > a > img {
-        width: 24px;
-        height: 24px;
-    }
-
-    .utilmenu {
-        visibility: hidden;    
-    }
-}
+/* 메인 전체 */
 
 /* 화면 메인 */
-main > .bg{
-    position: relative;    
+main > .bg {
+    position: relative;
 }
 
 main > .bg > picture {
@@ -297,24 +251,24 @@ main > .bg > picture {
 picture > img {
     object-fit: cover;
     width: 100%;
-    height: 100vh;    
+    height: 100vh;
 }
 
 .cybertrucklogo {
     position: absolute;
     width: 450px;
     height: 126.578px;
-    left: 50%; /* 화면의 가로 중심으로 이동 */
-    transform: translateX(-50%); /* 버튼박스의 가로 길이 절반만큼 왼쪽으로 이동 */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .textbox {
     position: absolute;
     width: 100%;
-    z-index: 200;      
-    display: flex; 
+    z-index: 200;
+    display: flex;
     flex-direction: column;
-    justify-content: center; 
+    justify-content: center;
     top: 0;
     margin-top: 160px;
 }
@@ -333,7 +287,7 @@ picture > img {
 .bg_subtitle {
     justify-content: center;
     align-items: center;
-    display: flex;    
+    display: flex;
     margin-top: 4px;
     font-size: 28px;
     font-weight: 500;
@@ -347,8 +301,8 @@ picture > img {
     color: #ffffff;
     text-decoration: underline;
     text-underline-offset: 8px;
-    text-decoration-color: currentColor; 
-    transition: text-decoration-color 0.5s ease; 
+    text-decoration-color: currentColor;
+    transition: text-decoration-color 0.5s ease;
 }
 
 .bg_subtitle > a:hover {
@@ -379,13 +333,13 @@ sup {
     width: 544px;
     z-index: 200;
     padding: 0 24px;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 32px;
     height: 40px;
     bottom: 0;
-    left: 50%; /* 화면의 가로 중심으로 이동 */
-    transform: translateX(-50%); /* 버튼박스의 가로 길이 절반만큼 왼쪽으로 이동 */
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .buttonbox > button {
@@ -396,7 +350,7 @@ sup {
     border-radius: 4px;
 }
 
-.orderbtn{
+.orderbtn {
     background-color: #3e6ae1;
     color: #ffffff;
     font-size: 14px;
@@ -404,14 +358,14 @@ sup {
     font-family: "Inter", sans-serif;
 }
 
-.demobtn{
+.demobtn {
     background-color: #ffffff;
     font-size: 14px;
     font-weight: 500;
     font-family: "Inter", sans-serif;
 }
 
-.cybertruck > .buttonbox > .orderbtn{   
+.cybertruck > .buttonbox > .orderbtn {
     background-color: #111;
     border-top: 3px solid #8e8e8e;
     border-radius: 0;
@@ -426,7 +380,7 @@ sup {
     letter-spacing: 1.2px;
 }
 
-.cybertruck > .buttonbox > .demobtn{
+.cybertruck > .buttonbox > .demobtn {
     padding: 4px 24px;
     height: 44px;
     background-color: #111;
@@ -436,31 +390,4 @@ sup {
     font-weight: 700;
     font-family: "Inter", sans-serif;
     color: #8e8e8e;
-}
-
-/* width 1200 px  이상일 경우 main */
-@media screen and (min-width: 1200px) {
-    .bg_title {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
-    
-    .bg_subtitle {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
-    
-    .bg_subtitle > a {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
-    
-    .textbox > p {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
 }
