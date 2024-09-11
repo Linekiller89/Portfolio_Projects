@@ -80,8 +80,103 @@ header {
     height: 24px;
     filter: brightness(0) invert(1); /* 흰색으로 기본 설정 */
 }
+/* whitebox 관련 */
+.whitebox {
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 56px;
+    background-color: white;
+    transition: top 0.3s ease-in-out, height 0.3s ease-in-out;
+    z-index: 1;
+    opacity: 0;
+}
 
-/* 메뉴 */
+
+/* whitebox 내려올 때 */
+.whitebox.open {
+    top: 0;
+    opacity: 1;
+}
+
+.logobox, .menubox, .utilbox, .utilmenu {
+    z-index: 100;
+}
+
+
+
+
+/* 모바일 메뉴 */
+.utilmenu {
+    position: absolute;
+    right : 0;
+    width: 70px;
+    height: 32px;
+    background-color: transparent;
+    border: none;
+}
+
+.headermain > .utilmenu {
+    border: 1px solid white;
+    border-style: none;
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+.utilmenu > span {
+    color : white;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+}
+
+/* 유틸메뉴 */
+.utilmenu {
+    position: absolute;
+    right: 0;
+    width: 70px;
+    height: 32px;
+    background-color: transparent;
+    border: none;
+}
+
+.utilmenu > span {
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Inter", sans-serif;
+}
+
+/* 유틸 박스 */
+.utilbox {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+
+.utilnav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-right: 32px;
+    font-size: 0px;
+}
+
+.utilnav > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.utilnav > li > a > img {
+    width: 24px;
+    height: 24px;
+    filter: brightness(0) invert(1); /* 흰색 기본 설정 */
+}
+
+
+    /* 메뉴 */
 .menubox {
     display: flex;
     align-items: center;
@@ -101,7 +196,7 @@ header {
     width: 100%;
     padding: 4px 16px;
     font: bold 14px "Inter", sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     cursor: pointer;
 }
 
@@ -304,74 +399,304 @@ header {
     justify-self: center;
 }
 
-/* whitebox 관련 */
-.whitebox {
-    position: absolute;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    height: 56px;
-    background-color: white;
-    transition: top 0.3s ease-in-out, height 0.3s ease-in-out;
-    z-index: 1;
-    opacity: 0;
+
+
+.menu {    
+    display: flex; 
 }
 
-/* whitebox 내려올 때 */
-.whitebox.open {
-    top: 0;
-    opacity: 1;
+.menu > li {      
+    display: flex; 
 }
 
-.logobox, .menubox, .utilbox, .utilmenu {
-    z-index: 100;
-}
-
-/* 유틸메뉴 */
-.utilmenu {
-    position: absolute;
-    right: 0;
-    width: 70px;
-    height: 32px;
+.menu > li > button {      
+    border: 1px solid transparent;    
     background-color: transparent;
+    height: 100%;
+    width: 100%;
+    padding: 4px 16px;
+    font: bold 14px "Inter", sans-serif;
+    font-weight: 500;       
+}
+
+.menu > li > button > span {       
+    color: white;
+    border: none;   
+    text-decoration: none;
+}
+/* 모바일 메뉴 */
+
+@media screen and (max-width: 1199px) {
+    .menubox{
+        display: none;
+    }
+
+    .utilbox {
+        display: none;
+    }
+
+    .utilmenu > span {
+        color: black;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: "Inter", sans-serif;
+    }
+}
+
+
+    /* 메뉴 */
+.menubox {
+    display: flex;
+    align-items: center;
+    height: 100%;    
+}
+
+.menubox > li {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.menubox > li > button {
+    border: 1px solid transparent;
+    background-color: transparent;
+    height: 32px;
+    width: 100%;
+    padding: 4px 16px;
+    font: bold 14px "Inter", sans-serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.menubox > li > button > span {
+    color: white; /* 기본적으로 흰색 */
     border: none;
+    text-decoration: none;
+}
+
+/* 서브메뉴 */
+.submenu {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;    
+    top: 56px;
+    left: 0;
+    width: 100vw;
+    padding: 0 28px 48px;
+    background-color: white;
+    transition: opacity 0.5s ease, height 0.5s ease;
+    z-index: 15;
+}
+
+/* 서브메뉴 보일 때 */
+.submenu.show {
+    visibility: visible;
+    opacity: 1;
+    height: auto; /* 서브메뉴의 높이를 설정 */
+}
+
+/* 그리드 레이아웃 */
+.vehicleslistbox {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
+    width: 94%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto; /* 수평 중앙 정렬 */
+}
+
+/* vehiclesproductlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
+.vehiclesproductlist {
+    grid-column: 2 / span 7;    
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4개의 열로 설정 */
+    grid-template-rows: repeat(2, 1fr); /* 2줄로 설정 */
+    gap: 10px;
+}
+
+/* vehiclesproductlist 내부 항목 스타일 */
+.vehiclesproductlist li {
+    border: 1px solid blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.charginglistbox {
+    border: 1px solid blue;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
+    width: 94%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto; /* 수평 중앙 정렬 */
+}
+
+/* vehiclesproductlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
+.chargingproductlist {
+    border: 1px solid red;   
+    padding: 16px;
+    display: grid;
+    grid-column: 1 / span 7; 
+}
+
+/* vehiclesproductlist 내부 항목 스타일 */
+.chargingproductlist li {
+    border: 1px solid blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#subcharging {
+    grid-column: 3 / span 2; 
+}
+
+#homecharging {
+    grid-column: 5 / span 1; 
+}
+
+#supercharging {
+    grid-column: 6 / span 2; 
+}
+
+.charging-vertical-line {
+    grid-column: 8 / span 1;
+    border-left: 1px solid #e0e0e0;
+    height: 100%;
+    justify-self: center;
+}
+
+.charging-info-box {
+    grid-column: 9 / span 2;
+    padding: 16px;
+    background-color: white;
+}
+
+/* 살펴보기 메뉴 */
+
+.discoverlistbox {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 64px 48px 16px; 
+    width: 94%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.discoverproductlist li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customerresources {
+    grid-column: 4 / span 1; 
+}
+
+.locationservices {
+    grid-column: 6 / span 1; 
+}
+
+.companyinfo {
+    grid-column: 8 / span 1; 
+}
+
+/* Shop 메뉴 */
+
+
+.shoplistbox {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.shopproductlist {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 64px 48px 16px; 
+    width: 94%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.shopproductlist li {
+    border: 1px solid blue;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#chargingacc {
+    grid-column: 3 / span 2; 
+}
+
+#caracc {
+    grid-column: 5 / span 2; 
+}
+
+#clothingacc {
+    grid-column: 7 / span 2; 
+}
+
+#lifestyleacc {
+    grid-column: 9 / span 2; 
+}
+
+
+
+
+/* info-box 스타일 */
+.info-box {
+    grid-column: 10 / span 3;
+    padding: 16px;
+    background-color: white;
+}
+
+/* 세로선 스타일 */
+.vertical-line {
+    grid-column: 9 / span 1;
+    border-left: 1px solid #e0e0e0;
+    height: 100%;
+    justify-self: center;
+}
+
+
+.menu {    
+    display: flex; 
+}
+
+.menu > li {      
+    display: flex; 
+}
+
+.menu > li > button {      
+    border: 1px solid transparent;    
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    padding: 4px 16px;
+    font: bold 14px "Inter", sans-serif;
+    font-weight: 500;       
+}
+
+.menu > li > button > span {       
+    color: white;
+    border: none;   
+    text-decoration: none;
 }
 
 .utilmenu > span {
-    color: black;
-    font-size: 14px;
-    font-weight: 500;
-    font-family: "Inter", sans-serif;
+    display: hidden;
 }
 
-/* 유틸 박스 */
-.utilbox {
-    display: flex;
-    height: 100%;
-    justify-content: center;
-}
 
-.utilnav {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding-right: 32px;
-    font-size: 0px;
-}
-
-.utilnav > li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.utilnav > li > a > img {
-    width: 24px;
-    height: 24px;
-    filter: brightness(0) invert(1); /* 흰색 기본 설정 */
-}
-
-/* 미디어 쿼리: 가로 크기 1440px 미만에서 vehiclesproductlist를 3열 2줄로 변경 */
 @media screen and (max-width: 1439px) {
     .vehiclesproductlist {
         grid-template-columns: repeat(3, 1fr);
@@ -382,6 +707,79 @@ header {
 /* 메인 전체 */
 
 /* 화면 메인 */
+
+/* 비디오를 전체 가로 사이즈로 설정 */
+.teslademo {
+height: 100vh; /* 뷰포트 전체 높이 */
+width: 100vw;
+position: relative; /* 내부의 텍스트와 버튼을 배치할 때 유용 */
+}
+
+video {
+width: 100vw;  
+height: 100vh;  /* 비디오의 높이를 뷰포트 전체 높이에 맞춤 */
+object-fit: cover;
+}
+
+/* 비디오 컨트롤러 제거 */
+video::-webkit-media-controls {
+display: none !important;
+}
+
+video::media-controls {
+display: none !important;
+}
+
+.videotextbox {
+    position: absolute;
+    width: 100%;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 0;
+    margin-top: 208.660px;
+}
+
+.videotitle {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: #ffffff;
+    font : bold 40px "Inter", sans-serif;
+    font-weight: 500;
+}
+
+.videotextbox > p {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 4px;
+    color: #ffffff;
+    font : bold 14px "Inter", sans-serif;
+    font-weight: 400;
+}
+
+.videobuttonbox {
+    position: absolute;
+    display: block;
+    width: 260px;
+    height: 40px;
+    padding: 4px 24px;
+    font : 14px "Inter", sans-serif;
+    z-index: 200;
+    margin-bottom: 130px;    
+    align-items: center;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.demobtn {
+    width: 100%;
+    height: 100%;
+}
+  
 main > .bg {
     position: relative;
 }
