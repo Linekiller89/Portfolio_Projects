@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <title>hello world!</title>
+    <style>
+      a {
+        color: black;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Georgia;
+      }
+      li {
+        list-style: none;
+      }
+      header {
+        background-color: black;
+        height: 60px;
+        padding: 40px 20px 0;
+      }
+      .btn {
+        display: none;
+      }
+      .menu a {
+        text-decoration-line: none;
+      }
+      .menu > ul {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: justify;
+        font-size: 0;
+        zoom: 1;
+        line-height: 0;
+      }
+      .menu > ul:after {
+        content: "";
+        width: 100%;
+        display: inline-block;
+        vertical-align: top;
+      }
+      .menu > ul > li {
+        display: inline-block;
+        font-size: 16px;
+        line-height: 1.2;
+        vertical-align: top;
+      }
+      .menu > ul > li > a {
+        text-transform: uppercase;
+        color: white;
+        background-color: gray;
+        padding-bottom: 41px;
+        display: block;
+      }
+      .menu > ul > li > ul {
+        transition: all 0.5s ease;
+        /* display: none;  */
+        overflow: hidden;
+        /* height:0; */
+        max-height: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        background-color: #ededed;
+        top: 100px;
+        text-align: center;
+      }
+      .menu > ul > li.active > ul {
+        max-height: 200px;
+      }
+      .menu > ul > li > ul > li {
+        display: inline-block;
+        text-align: left;
+        vertical-align: top;
+        margin: 30px 20px;
+      }
+      .menu > ul > li > ul > li > a {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .menu > ul > li > ul > li > ul > li {
+        margin: 10px 0;
+      }
+
+      @media screen and (max-width: 768px) {
+        body {
+          background-color: yellow;
+        }
+        .btn {
+          position: fixed;
+          display: block;
+          left: 40px;
+          top: 10px;
+          z-index: 100;
+          width: 30px;
+          height: 30px;
+          text-indent: -9999px;
+        }
+        header {
+          background-color: transparent;
+        }
+        header .btn:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 8px;
+          display: inline-block;
+          width: 30px;
+          height: 2px;
+          background-color: rgb(212, 212, 212);
+        }
+        header .btn:after {
+          content: "";
+          position: absolute;
+          right: 0;
+          bottom: 8px;
+          display: inline-block;
+          width: 30px;
+          height: 2px;
+          background-color: rgb(212, 212, 212);
+        }
+        header.active .btn:before {
+          top: 15px;
+          transform: rotate(-45deg);
+        }
+        header.active .btn:after {
+          bottom: 13px;
+          transform: rotate(45deg);
+        }
+
+        header .menu {
+          height: 50px;
+          overflow: hidden;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: black;
+        }
+        header.active .menu {
+          height: auto;
+        }
+        .menu > ul {
+          margin: 50px 40px;
+        }
+        .menu > ul > li {
+          display: block;
+          border-bottom: 1px solid #333;
+        }
+        .menu > ul > li > a {
+          letter-spacing: 2px;
+          background-color: transparent;
+          padding-bottom: 0;
+          padding: 15px 0;
+          position: relative;
+        }
+        .menu > ul > li.sub > a:before {
+          content: "";
+          position: absolute;
+          top: 25px;
+          right: 0;
+          width: 10px;
+          border-bottom: 1px solid rgb(212, 212, 212);
+          transform: rotate(-45deg);
+        }
+        .menu > ul > li.sub > a:after {
+          content: "";
+          position: absolute;
+          top: 25px;
+          right: 7px;
+          width: 10px;
+          border-bottom: 1px solid rgb(212, 212, 212);
+          transform: rotate(45deg);
+        }
+        .menu > ul > li.sub.active > a:before {
+          transform: rotate(45deg);
+        }
+        .menu > ul > li.sub.active > a:after {
+          transform: rotate(-45deg);
+        }
+        .menu > ul > li > ul {
+          position: static;
+          background-color: transparent;
+          padding: 0;
+          border-top: 1px solid black;
+        }
+        .menu > ul > li.active > ul {
+          background-color: transparent;
+          border-top: 1px solid rgb(212, 212, 212);
+        }
+        .menu > ul > li > ul > li {
+          display: block;
+          margin: 0;
+        }
+        .menu > ul > li > ul > li > a {
+          padding: 10px 0;
+          display: block;
+          color: #999;
+          font-weight: normal;
+          font-size: 16px;
+        }
+      } /* 768px media end */
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="active">
+        <!-- "active" : 모바일 메뉴 열렸을 때 -->
+        <a href="" class="btn">전체메뉴</a>
+        <nav class="menu">
+          <ul>
+            <li>
+              <!-- "sub" : 하위메뉴가 있을때, "active" : 하위 메뉴 열림 -->
+              <a href="">coffee</a>
+              <ul>
+                <li><a href="">스타벅스 원두</a></li>
+                <li><a href="">스타벅스 비아</a></li>
+                <li><a href="">스타벅스 오리가미</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="">menu</a>
+              <ul>
+                <li><a href="">콜드 브루</a></li>
+                <li><a href="">브루드 커피</a></li>
+                <li><a href="">에스프레소</a></li>
+                <li><a href="">프라푸치노</a></li>
+                <li><a href="">블랜디드</a></li>
+                <li><a href="">스타벅스 피지오</a></li>
+              </ul>
+            </li>
+            <li><a href="">store</a></li>
+            <li><a href="">responsibility</a></li>
+            <li><a href="">my starbucks rewards</a></li>
+            <li><a href="">what's new</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <script>
+      // const mobileMenu = {
+      // 	openMenu: function (){},
+      // 	clickWork: function () {},
+      // 	start: function () {}
+      // }
+      // const wideMenu = {
+      // 	overWork: function () { },
+      // 	outWork: function () { },
+      // 	start: function () { }
+      // }
+
+      // 노드준비
+      const menuLiEls = document.querySelectorAll(".menu > ul > li");
+      const menuEl = document.querySelector(".menu");
+      const openBtn = document.querySelector(".btn");
+      const headerEl = document.querySelector("header");
+      headerEl.addEventListener("click", openMenu);
+      let resizeTimer = null;
+
+      // 리사이즈 이벤트
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer); // 바깥에 저장된 이전타이머를 제거
+        resizeTimer = setTimeout(sizeCheck, 100); // 현재 타이머를 바깥에 저장
+      });
+
+      sizeCheck();
+      function sizeCheck() {
+        if (document.body.clientWidth > 768) {
+          console.log("desktop");
+          menuEl.removeEventListener("click", clickWork);
+          menuLiEls.forEach((liEl) => {
+            liEl.addEventListener("mouseenter", enterWork);
+            liEl.addEventListener("mouseleave", leaveWork);
+          });
+        } else {
+          console.log("mobile");
+          menuLiEls.forEach((liEl) => {
+            liEl.removeEventListener("mouseenter", enterWork);
+            liEl.removeEventListener("mouseleave", leaveWork);
+          });
+          menuEl.addEventListener("click", clickWork);
+        }
+      }
+      // 초기화
+      domInit();
+      function domInit() {
+        menuLiEls.forEach((liEl) => {
+          if (liEl.querySelector("ul")) {
+            liEl.classList.add("sub");
+          }
+        });
+      }
+      function openMenu(e) {
+        e.preventDefault();
+        if (!e.target.classList.contains("btn")) return;
+        headerEl.classList.toggle("active");
+      }
+      function clickWork(e) {
+        e.preventDefault();
+        const liEl = e.target.parentNode;
+        if (liEl.classList.contains("sub")) {
+          liEl.classList.toggle("active");
+        }
+      }
+      function enterWork(e) {
+        if (e.target.classList.contains("sub")) {
+          e.target.classList.add("active");
+        }
+      }
+      function leaveWork(e) {
+        if (e.target.classList.contains("sub")) {
+          e.target.classList.remove("active");
+        }
+      }
+    </script>
+  </body>
+</html>

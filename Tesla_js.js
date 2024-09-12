@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const mainHeader = document.querySelector(".mainheader");
   const logobox = document.querySelector(".logobox");
   const utilbox = document.querySelector(".utilbox");
+  const blurscreen = document.querySelector(".blurscreen");
+  const openMenu = document.querySelector(".openmenu");
+
   let lastScrollY = window.scrollY;
   let activeSubmenu = null;
 
@@ -35,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
       activeSubmenu.style.height = "0px";
       activeSubmenu.classList.remove("show");
       activeSubmenu = null;
+      if (!isInHeader) hideBlurScreen(); // 서브메뉴가 닫힐 때 blurscreen 숨김
     }
   }
 
@@ -42,6 +46,15 @@ document.addEventListener("DOMContentLoaded", function () {
     whitebox.classList.add("open");
     hiddenHeader.classList.add("scrolled");
     setHeaderColors("black");
+  }
+
+  // blurscreen 관련 기능 추가
+  function showBlurScreen() {
+    blurscreen.style.display = "block";
+  }
+
+  function hideBlurScreen() {
+    blurscreen.style.display = "none";
   }
 
   window.addEventListener("scroll", function () {
@@ -70,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
   menuItems.forEach(function (item) {
     item.addEventListener("mouseenter", function () {
       openWhitebox();
+      showBlurScreen(); // 메뉴에 마우스가 들어갈 때 blurScreen 보이기
 
       let whiteboxHeight;
       if (item.classList.contains("vehicles")) {
@@ -99,10 +113,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const isInHeader = mainHeader.contains(event.relatedTarget);
       const isInLogobox = logobox.contains(event.relatedTarget);
       const isInUtilbox = utilbox.contains(event.relatedTarget);
-      const isTop = window.scrollY === 0;
+      const isInAnotherMenu = Array.from(menuItems).some((li) => li.contains(event.relatedTarget));
+
+      if (!isInAnotherMenu && activeSubmenu) {
+        if (!isInHeader) hideBlurScreen(); // 서브메뉴가 닫힐 때만 blurScreen을 숨김
+      }
 
       if (isInLogobox || isInUtilbox) {
-        if (isTop) {
+        if (window.scrollY === 0) {
           closeWhitebox();
         } else {
           if (activeSubmenu) {
@@ -112,15 +130,15 @@ document.addEventListener("DOMContentLoaded", function () {
           }
           whitebox.style.height = `${headerHeight}px`;
         }
-      } else if (!isInHeader) {
+      } else if (!isInHeader && !isInAnotherMenu) {
         closeWhitebox();
       }
     });
   });
 
   logobox.addEventListener("mouseenter", function () {
-    const isTop = window.scrollY === 0;
-    if (isTop) {
+    hideBlurScreen();
+    if (window.scrollY === 0) {
       closeWhitebox();
     } else {
       if (activeSubmenu) {
@@ -133,8 +151,8 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   utilbox.addEventListener("mouseenter", function () {
-    const isTop = window.scrollY === 0;
-    if (isTop) {
+    hideBlurScreen();
+    if (window.scrollY === 0) {
       closeWhitebox();
     } else {
       if (activeSubmenu) {
@@ -148,7 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   mainHeader.addEventListener("mouseenter", function () {
     if (whitebox.classList.contains("open")) {
-      whitebox.style.height = "auto";
+      whitebox.style.height = headerHeight + "px";
     }
   });
 

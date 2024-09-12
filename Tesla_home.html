@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./Tesla_CSS.css" />
   </head>
   <body>
-    <header>
+    <header class="active">
       <div class="mainheader">
         <div class="logobox">
           <h1 class="logo">
@@ -116,11 +116,13 @@
             </li>
           </ul>
         </div>
-        <button class="utilmenu"><span>메뉴</span></button>
+
+        <button class="openmenu"><span>메뉴</span></button>
       </div>
     </header>
 
     <main>
+      <div class="blurscreen"></div>
       <div class="teslademo">
         <video autoplay muted playsinline loop>
           <source src="./img/Homepage-Demo-Drive-Desktop-NA.webm" type="video/webm" />
@@ -180,6 +182,8 @@
         </div>
       </div>
     </main>
+
+    <footer></footer>
 
     <script src="./Tesla_js.js"></script>
   </body>
