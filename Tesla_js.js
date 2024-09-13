@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const utilbox = document.querySelector(".utilbox");
   const blurscreen = document.querySelector(".blurscreen");
   const openMenu = document.querySelector(".openmenu");
+  const mobileMenu = document.querySelector(".mobilemenu");
+  const body = document.querySelector("body");
 
   let lastScrollY = window.scrollY;
   let activeSubmenu = null;
@@ -38,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       activeSubmenu.style.height = "0px";
       activeSubmenu.classList.remove("show");
       activeSubmenu = null;
-      if (!isInHeader) hideBlurScreen(); // 서브메뉴가 닫힐 때 blurscreen 숨김
+      hideBlurScreen();
     }
   }
 
@@ -48,14 +50,71 @@ document.addEventListener("DOMContentLoaded", function () {
     setHeaderColors("black");
   }
 
-  // blurscreen 관련 기능 추가
   function showBlurScreen() {
+    if (window.innerWidth < 1200) return;
     blurscreen.style.display = "block";
   }
 
   function hideBlurScreen() {
     blurscreen.style.display = "none";
   }
+
+  // 모바일 메뉴 열기 및 스크롤 비활성화
+  openMenu.addEventListener("click", function () {
+    if (mobileMenu.classList.contains("open")) {
+      mobileMenu.classList.remove("open");
+      body.style.overflow = ""; // 스크롤 활성화
+      hideBlurScreen();
+    } else {
+      mobileMenu.classList.add("open");
+      body.style.overflow = "hidden"; // 스크롤 비활성화
+      showBlurScreen();
+    }
+
+    // 모바일 메뉴 닫기 및 스크롤 활성화
+    const closeMenu = document.querySelector(".closemenu");
+    closeMenu.addEventListener("click", function () {
+      mobileMenu.classList.remove("open");
+      body.style.overflow = ""; // 스크롤 활성화
+    });
+  });
+
+  // 차량, 충전, 살펴보기 버튼 클릭 시 show 클래스 추가 및 mobilesubheader 생성
+
+  const mobileMenuButtons = document.querySelectorAll(
+    ".mobilevehicles button, .mobilecharging button, .mobilediscover button"
+  );
+
+  mobileMenuButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const parentLi = button.closest("li");
+      const submenu = parentLi.querySelector(".mobile");
+
+      if (submenu && !submenu.classList.contains("show")) {
+        submenu.classList.add("show");
+
+        const mobilesubheader = document.createElement("div");
+        mobilesubheader.classList.add("mobilesubheader");
+
+        const backButton = document.createElement("button");
+        backButton.innerHTML = `<img src="./img/mobile/뒤로가기버튼.svg" alt="" />뒤로가기버튼`;
+        backButton.classList.add("back-button");
+
+        const title = document.createElement("h2");
+        title.innerText = button.innerText;
+
+        mobilesubheader.appendChild(backButton);
+        mobilesubheader.appendChild(title);
+
+        submenu.insertBefore(mobilesubheader, submenu.firstChild);
+
+        backButton.addEventListener("click", function () {
+          submenu.classList.remove("show");
+          submenu.removeChild(mobilesubheader);
+        });
+      }
+    });
+  });
 
   window.addEventListener("scroll", function () {
     const currentScrollY = window.scrollY;
@@ -83,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function () {
   menuItems.forEach(function (item) {
     item.addEventListener("mouseenter", function () {
       openWhitebox();
-      showBlurScreen(); // 메뉴에 마우스가 들어갈 때 blurScreen 보이기
+      showBlurScreen();
 
       let whiteboxHeight;
       if (item.classList.contains("vehicles")) {
@@ -115,8 +174,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const isInUtilbox = utilbox.contains(event.relatedTarget);
       const isInAnotherMenu = Array.from(menuItems).some((li) => li.contains(event.relatedTarget));
 
-      if (!isInAnotherMenu && activeSubmenu) {
-        if (!isInHeader) hideBlurScreen(); // 서브메뉴가 닫힐 때만 blurScreen을 숨김
+      if (!isInAnotherMenu && !activeSubmenu) {
+        hideBlurScreen();
       }
 
       if (isInLogobox || isInUtilbox) {
