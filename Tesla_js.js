@@ -119,6 +119,9 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", function () {
     const currentScrollY = window.scrollY;
 
+    // 스크롤 제한: cybertruck div까지만 스크롤 가능
+    limitScrollToCybertruck();
+
     if (currentScrollY < lastScrollY && currentScrollY > 0) {
       openWhitebox();
       whitebox.style.height = `${headerHeight}px`;
