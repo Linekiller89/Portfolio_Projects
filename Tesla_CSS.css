@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+KR:wght@100..900&display=swap");
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   font-family: "Inter", sans-serif;
   color: #333333;
@@ -114,6 +119,7 @@ header {
   height: 24px;
   filter: brightness(0) invert(1); /* 흰색으로 기본 설정 */
 }
+
 /* whitebox 관련 */
 .whitebox {
   position: absolute;
@@ -208,11 +214,12 @@ header {
   position: absolute;
   top: 56px;
   left: 0;
-  width: 100vw;
+  width: 100%;
   padding: 0 28px 48px;
   background-color: white;
   transition: opacity 0.5s ease, height 0.5s ease;
   z-index: 15;
+  overflow: hidden; /* 넘치는 부분 숨기기 */
 }
 
 /* 서브메뉴 보일 때 */
@@ -244,14 +251,12 @@ header {
 
 /* vehiclesproductlist 내부 항목 스타일 */
 .vehiclesproductlist li {
-  border: 1px solid blue;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .charginglistbox {
-  border: 1px solid blue;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
@@ -261,17 +266,15 @@ header {
   margin: 0 auto; /* 수평 중앙 정렬 */
 }
 
-/* vehiclesproductlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
+/* chargingproductlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
 .chargingproductlist {
-  border: 1px solid red;
   padding: 16px;
   display: grid;
   grid-column: 1 / span 7;
 }
 
-/* vehiclesproductlist 내부 항목 스타일 */
+/* chargingproductlist 내부 항목 스타일 */
 .chargingproductlist li {
-  border: 1px solid blue;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -303,7 +306,6 @@ header {
 }
 
 /* 살펴보기 메뉴 */
-
 .discoverlistbox {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -333,7 +335,6 @@ header {
 }
 
 /* Shop 메뉴 */
-
 .shoplistbox {
   height: 100%;
   display: flex;
@@ -351,7 +352,6 @@ header {
 }
 
 .shopproductlist li {
-  border: 1px solid blue;
   height: 100%;
   display: flex;
   align-items: center;
@@ -443,7 +443,7 @@ header {
     position: fixed;
     top: 0;
     right: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: white;
     z-index: 1000;
@@ -631,7 +631,7 @@ header {
     position: fixed;
     top: 0;
     right: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: white;
     z-index: 1100;
@@ -644,7 +644,7 @@ header {
     position: fixed;
     top: 0;
     right: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: white;
     z-index: 1100;
@@ -656,7 +656,7 @@ header {
     position: fixed;
     top: 0;
     right: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: white;
     z-index: 1100;
@@ -1085,12 +1085,12 @@ header {
 /* 비디오를 전체 가로 사이즈로 설정 */
 .teslademo {
   height: 100vh; /* 뷰포트 전체 높이 */
-  width: 100vw;
+  width: 100%;
   position: relative; /* 내부의 텍스트와 버튼을 배치할 때 유용 */
 }
 
 video {
-  width: 100vw;
+  width: 100%;
   height: 100vh; /* 비디오의 높이를 뷰포트 전체 높이에 맞춤 */
   object-fit: cover;
 }
@@ -1136,22 +1136,35 @@ video::media-controls {
 
 .videobuttonbox {
   position: absolute;
-  display: block;
+  display: flex; /* flex를 사용하여 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
   width: 260px;
   height: 40px;
-  padding: 4px 24px;
   font: 14px "Inter", sans-serif;
   z-index: 200;
   margin-bottom: 130px;
-  align-items: center;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.demobtn {
+.videodemobtn {
   width: 100%;
   height: 100%;
+  background-color: transparent;
+  border: 2px solid white; /* 흰색 테두리 */
+  color: white; /* 흰색 글자색 */
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 4px; /* 둥근 모서리 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.videodemobtn:hover {
+  background-color: white; /* 호버 시 배경을 약간 반투명하게 */
+  color: black; /* 호버 시 글자색 유지 */
 }
 
 main > .bg {
@@ -1304,4 +1317,58 @@ sup {
   font-weight: 700;
   font-family: "Inter", sans-serif;
   color: #8e8e8e;
+}
+
+/* 푸터 */
+/* 푸터 전체 (1200이상) */
+
+footer {
+  background-color: #000; /* 검정색 배경 */
+  color: rgba(208, 209, 210); /* 흰색 텍스트 */
+  display: flex; /* Flexbox를 적용하여 하단에 있는 요소들을 가로로 배치 */
+  flex-direction: column; /* 세로로 배치 */
+  height: 144px;
+  padding: 0 24px;
+  text-align: center;
+  font-family: "Inter", sans-serif; /* 폰트 설정 */
+  font-size: 14px; /* 기본 텍스트 크기 */
+}
+
+.footer-content {
+  width: 100%; /* 콘텐츠 너비 제한 */
+  margin: 0 auto; /* 수평 중앙 정렬 */
+}
+
+.footer-links {
+  display: flex;
+  color: rgba(208, 209, 210);
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  flex-wrap: wrap; /* 링크가 화면에 맞춰 줄바꿈될 수 있도록 설정 */
+  height: 70px; /* 필요한 경우 높이를 설정하여 중앙 정렬 적용 */
+}
+
+.footer-links a {
+  font: 12px "Inter", sans-serif; /* 링크 텍스트 크기 */
+  color: rgba(208, 209, 210);
+  text-decoration: none; /* 밑줄 제거 */
+  margin-right: 16px; /* 링크 사이 간격 */
+}
+
+.footer-banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  height: 60px;
+  font: 10px "Inter", sans-serif; /* 텍스트 크기 */
+  color: rgba(208, 209, 210);
+  line-height: 2; /* 텍스트 줄 간격 */
+  bottom: 0; /* 하단에 배치 */
+  padding-bottom: 14px;
+}
+
+.footer-banner a {
+  color: rgba(208, 209, 210);
+  text-decoration: underline;
 }
