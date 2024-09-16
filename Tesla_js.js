@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // 변수 선언
+  // 기존 코드들은 그대로 유지...
+
   const whitebox = document.querySelector(".whitebox");
   const menuItems = document.querySelectorAll(".menubox > li");
   const headerHeight = 56;
@@ -10,7 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const logobox = document.querySelector(".logobox");
   const utilbox = document.querySelector(".utilbox");
   const blurscreen = document.querySelector(".blurscreen");
-  const body = document.querySelector("body");
+  const openmenu = document.querySelector(".openmenu");
+  const mobilemenu = document.querySelector(".mobilemenu");
+  const closemenu = document.querySelector(".closemenu");
 
   let lastScrollY = window.scrollY;
   let activeSubmenu = null;
@@ -45,11 +48,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function showBlurScreen() {
     if (window.innerWidth < 1200) return;
     blurscreen.style.display = "block";
+    blurscreen.classList.add("active");
   }
 
   // 블러 스크린 숨기기 함수
   function hideBlurScreen() {
     blurscreen.style.display = "none";
+    blurscreen.classList.remove("active");
   }
 
   // 메뉴 아이템에 마우스 진입 시 이벤트 핸들러
@@ -86,20 +91,24 @@ document.addEventListener("DOMContentLoaded", function () {
       if (
         !mainHeader.contains(relatedTarget) &&
         !whitebox.contains(relatedTarget) &&
-        !menuItems.some((li) => li.contains(relatedTarget))
+        !Array.from(menuItems).some((li) => li.contains(relatedTarget))
       ) {
         if (activeSubmenu) {
           activeSubmenu.classList.remove("show");
           activeSubmenu.style.height = "0px";
           activeSubmenu = null;
         }
-        closeWhitebox();
+        if (window.scrollY === 0) {
+          closeWhitebox();
+        } else {
+          whitebox.style.height = `${headerHeight}px`;
+        }
         hideBlurScreen();
       }
     });
   });
 
-  // 로고박스 및 유틸박스에 마우스 진입 시 화이트박스 제거
+  // 로고박스 및 유틸박스에 마우스 진입 시 서브메뉴 제거
   [logobox, utilbox].forEach((element) => {
     element.addEventListener("mouseenter", function () {
       if (activeSubmenu) {
@@ -107,7 +116,11 @@ document.addEventListener("DOMContentLoaded", function () {
         activeSubmenu.style.height = "0px";
         activeSubmenu = null;
       }
-      closeWhitebox();
+      if (window.scrollY === 0) {
+        closeWhitebox();
+      } else {
+        whitebox.style.height = `${headerHeight}px`;
+      }
       hideBlurScreen();
     });
   });
@@ -119,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (
         !mainHeader.contains(relatedTarget) &&
         !submenu.contains(relatedTarget) &&
-        !menuItems.some((li) => li.contains(relatedTarget))
+        !Array.from(menuItems).some((li) => li.contains(relatedTarget))
       ) {
         submenu.classList.remove("show");
         submenu.style.height = "0px";
@@ -149,7 +162,7 @@ document.addEventListener("DOMContentLoaded", function () {
       closeWhitebox();
       hideBlurScreen();
     } else {
-      // 스크롤 업: 화이트박스와 헤더 노출
+      // 스크롤 업: 헤더와 기본 화이트박스 유지
       mainHeader.classList.remove("hidden");
       mainHeader.classList.add("scrolled");
       setHeaderColors("black");
@@ -159,19 +172,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (currentScrollY === 0) {
       // 최상단 도달: 화이트박스 제거
-      closeWhitebox();
-      mainHeader.classList.remove("scrolled");
-      setHeaderColors("white");
+      if (!activeSubmenu) {
+        closeWhitebox();
+        mainHeader.classList.remove("scrolled");
+        setHeaderColors("white");
+      }
     }
 
     lastScrollY = currentScrollY;
   });
 
-  // 메인헤더에 마우스 진입 시
-  mainHeader.addEventListener("mouseenter", function () {
-    if (window.scrollY === 0 && !activeSubmenu) {
-      closeWhitebox();
-      setHeaderColors("white");
-    }
+  // 모바일 메뉴 설정
+  const mobileMenuButtons = document.querySelectorAll(
+    ".mobilevehicles button, .mobilecharging button, .mobilediscover button"
+  );
+
+  mobileMenuButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const parentLi = button.closest("li");
+      const submenu = parentLi.querySelector(".mobile");
+
+      if (submenu && !submenu.classList.contains("show")) {
+        submenu.classList.add("show");
+
+        const mobilesubheader = document.createElement("div");
+        mobilesubheader.classList.add("mobilesubheader");
+
+        const backButton = document.createElement("button");
+        backButton.innerHTML = `<img src="./img/mobile/뒤로가기버튼.svg" alt="뒤로가기" />`;
+        backButton.classList.add("back-button");
+
+        const title = document.createElement("h2");
+        title.innerText = button.innerText;
+
+        mobilesubheader.appendChild(backButton);
+        mobilesubheader.appendChild(title);
+
+        submenu.insertBefore(mobilesubheader, submenu.firstChild);
+
+        // 뒤로가기 버튼 클릭 시 show 클래스 제거 및 뒤로가기 버튼 제거
+        backButton.addEventListener("click", function () {
+          submenu.classList.remove("show");
+          submenu.removeChild(mobilesubheader);
+        });
+      }
+    });
+  });
+
+  // 메뉴 아이콘 클릭 시 메뉴 오픈
+  openmenu.addEventListener("click", function () {
+    mobilemenu.classList.add("open");
+    document.querySelector(".menubox").classList.toggle("active");
+  });
+
+  // 메뉴 닫기 버튼 클릭 시 메뉴 닫기
+  closemenu.addEventListener("click", function () {
+    mobilemenu.classList.remove("open");
+    document.querySelector(".menubox").classList.toggle("active");
   });
 });
