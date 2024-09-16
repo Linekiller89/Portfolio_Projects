@@ -228,6 +228,7 @@ header {
   opacity: 1;
 }
 
+/* Vehicles 메뉴 스타일 */
 /* 그리드 레이아웃 */
 .vehicleslistbox {
   display: grid;
@@ -251,12 +252,96 @@ header {
 
 /* vehiclesproductlist 내부 항목 스타일 */
 .vehiclesproductlist li {
+  border: 1px solid red;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+.vehiclesproductlist li a img {
+  width: 100%;
+  height: auto;
+}
+
+.vehiclesproductlist .cartextbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.vehiclesproductlist .cartextbox p {
+  padding: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 8px;
+}
+
+.vehiclesproductlist .abox,
+.vehiclesproductlist .cybertruckabox {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.vehiclesproductlist .abox a,
+.vehiclesproductlist .cybertruckabox a {
+  font-size: 16px;
+  color: #5c5d61;
+  text-decoration: underline;
+}
+
+/* Charging 메뉴 스타일 */
+
+.chargingproductlist {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3개의 열로 설정 */
+  gap: 20px;
+  padding: 40px 0;
+  justify-items: center;
+}
+
+.chargingproductlist li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chargingproductlist li a img {
+  width: 100%; /* 이미지 너비를 100%로 설정 */
+  height: auto;
+}
+
+.chargingproductlist .cartextbox {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.chargingproductlist .cartextbox p {
+  font-size: 20px;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 8px;
+}
+
+.chargingproductlist .abox,
+.chargingproductlist .cybertruckabox {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.chargingproductlist .abox a,
+.chargingproductlist .cybertruckabox a {
+  font-size: 16px;
+  color: #5c5d61;
+  text-decoration: underline;
+}
+
 .charginglistbox {
+  border: 1px solid red;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
@@ -268,6 +353,7 @@ header {
 
 /* chargingproductlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
 .chargingproductlist {
+  border: 1px solid blue;
   padding: 16px;
   display: grid;
   grid-column: 1 / span 7;
