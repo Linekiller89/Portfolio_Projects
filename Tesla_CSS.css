@@ -241,18 +241,18 @@ header {
 
 /* vehiclesproductlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
 .vehiclesproductlist {
-  grid-column: 2 / span 7;
-  padding: 16px;
+  grid-column: 2 / span 8;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4개의 열로 설정 */
   grid-template-rows: repeat(2, 1fr); /* 2줄로 설정 */
-  gap: 10px;
+  gap: 16px;
 }
 
 /* vehiclesproductlist 내부 항목 스타일 */
 .vehiclesproductlist li {
-  border: 1px solid red;
   display: flex;
+  max-width: 220px;
+  height: 175px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -271,11 +271,9 @@ header {
 }
 
 .vehiclesproductlist .cartextbox p {
-  padding: 16px;
   font-size: 20px;
   font-weight: 700;
   color: black;
-  margin-bottom: 8px;
 }
 
 .vehiclesproductlist .abox,
@@ -294,9 +292,20 @@ header {
 
 /* Charging 메뉴 스타일 */
 
-.chargingproductlist {
+.charginglistbox {
+  border: 1px solid red;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
+  width: 94%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0 auto; /* 수평 중앙 정렬 */
+}
+
+.chargingproductlist {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
   width: 94%;
   height: 100%;
@@ -324,7 +333,6 @@ header {
   font-size: 20px;
   font-weight: 700;
   color: black;
-  margin-bottom: 8px;
 }
 
 .chargingproductlist .abox,
@@ -339,17 +347,6 @@ header {
   font-size: 16px;
   color: #5c5d61;
   text-decoration: underline;
-}
-
-.charginglistbox {
-  border: 1px solid red;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
-  width: 94%;
-  height: 100%;
-  box-sizing: border-box;
-  margin: 0 auto; /* 수평 중앙 정렬 */
 }
 
 /* chargingproductlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
@@ -392,7 +389,8 @@ header {
   background-color: white;
 }
 
-/* 살펴보기 메뉴 */
+/* 살펴보기 메뉴 스타일*/
+
 .discoverlistbox {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -439,10 +437,30 @@ header {
 }
 
 .shopproductlist li {
-  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.shopproductlist li a {
+  font-size: 0;
+}
+
+.shopproductlist li a img {
+  width: 100%; /* 이미지 너비를 100%로 설정 */
+  height: auto;
+}
+
+.shopproductlist .cartextbox {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.shopproductlist .cartextbox p {
+  font-size: 17px;
+  font-weight: 500;
+  color: black;
 }
 
 #chargingacc {
@@ -811,336 +829,335 @@ header {
   }
 }
 
-  @media screen and (max-width: 900px) {
-    .mobilevehiclesproductlist {
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, auto);
-      gap: 16px;
-    }
+@media screen and (max-width: 900px) {
+  .mobilevehiclesproductlist {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .mobilevehiclesproductlist {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 16px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .mobilevehiclesproductlist {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-height: 514px; /* 최대 높이 제한 */
+    gap: 16px;
+    padding: 32px 0 24px;
   }
 
-  @media screen and (max-width: 600px) {
-    .mobilevehiclesproductlist {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, auto);
-      gap: 16px;
-    }
+  .mobilevehiclesproductlist li {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    height: 84px; /* li의 높이를 적절히 조정 */
+    padding: 0;
+  }
+  /* #carimg와 cartextbox가 gap 없이 가로 배치되도록 설정 */
+  .mobilevehiclesproductlist li #carimg {
+    width: 50%; /* 이미지 너비를 지정 */
+    height: auto; /* 부모 크기에 맞추기 */
   }
 
-  @media screen and (max-width: 450px) {
-    .mobilevehiclesproductlist {
-      display: grid;
-      grid-template-columns: 1fr;
-      max-height: 514px; /* 최대 높이 제한 */
-      gap: 16px;
-      padding: 32px 0 24px;
-    }
+  .mobilevehiclesproductlist li #carimg img {
+    max-width: 160px; /* 이미지 사이즈 조정 */
+    max-height: 90px;
+  }
 
-    .mobilevehiclesproductlist li {
-      display: flex;
-      flex-direction: row !important;
-      align-items: center;
-      height: 84px; /* li의 높이를 적절히 조정 */
-      padding: 0;
-    }
-    /* #carimg와 cartextbox가 gap 없이 가로 배치되도록 설정 */
-    .mobilevehiclesproductlist li #carimg {
-      width: 50%; /* 이미지 너비를 지정 */
-      height: auto; /* 부모 크기에 맞추기 */
-    }
+  .mobilevehiclesproductlist li .cartextbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    font-size: 12px; /* 텍스트 크기 축소 */
+    width: 50%; /* 이미지 너비를 지정 */
+    text-align: left; /* 텍스트 좌측 정렬 */
+    align-items: flex-start; /* 텍스트 좌측 정렬을 위한 flex 속성 추가 */
+  }
 
-    .mobilevehiclesproductlist li #carimg img {
-      max-width: 160px; /* 이미지 사이즈 조정 */
-      max-height: 90px;
-    }
+  .cartextbox p {
+    font-size: 17px; /* 텍스트 크기 줄임 */
+    color: black;
+    text-align: left; /* 설명 텍스트 좌측 정렬 */
+  }
 
-    .mobilevehiclesproductlist li .cartextbox {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-left: 10px;
-      font-size: 12px; /* 텍스트 크기 축소 */
-      width: 50%; /* 이미지 너비를 지정 */
-      text-align: left; /* 텍스트 좌측 정렬 */
-      align-items: flex-start; /* 텍스트 좌측 정렬을 위한 flex 속성 추가 */
-    }
+  .cartextbox .abox {
+    font-size: 12px; /* 차량 이름 및 버튼 크기 줄임 */
+    color: #333;
+    text-decoration: none;
+    justify-content: flex-start !important;
+    text-align: left; /* 링크 텍스트 좌측 정렬 */
+  }
 
-    .cartextbox p {
-      font-size: 17px; /* 텍스트 크기 줄임 */
-      color: black;
-      text-align: left; /* 설명 텍스트 좌측 정렬 */
-    }
-
-    .cartextbox .abox {
-      font-size: 12px; /* 차량 이름 및 버튼 크기 줄임 */
-      color: #333;
-      text-decoration: none;
-      justify-content: flex-start !important;
-      text-align: left; /* 링크 텍스트 좌측 정렬 */
-    }
-
-    .cybertruckabox {
-      font-size: 12px; /* 차량 이름 및 버튼 크기 줄임 */
-      color: #333;
-      text-decoration: none;
-      justify-content: flex-start !important;
-    }
-
-    /* 스크롤바 숨기기 */
-    .mobilevehiclesproductlist::-webkit-scrollbar {
-      display: none; /* 스크롤바 숨김 */
-    }
+  .cybertruckabox {
+    font-size: 12px; /* 차량 이름 및 버튼 크기 줄임 */
+    color: #333;
+    text-decoration: none;
+    justify-content: flex-start !important;
   }
 
   /* 스크롤바 숨기기 */
   .mobilevehiclesproductlist::-webkit-scrollbar {
-    display: none;
+    display: none; /* 스크롤바 숨김 */
   }
+}
 
-  .mobilevehiclesproductlist li {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+/* 스크롤바 숨기기 */
+.mobilevehiclesproductlist::-webkit-scrollbar {
+  display: none;
+}
 
-  .mobilevehiclesproductlist li a img {
-    width: 100%; /* 이미지 사이즈 조정 */
-    height: auto;
-  }
+.mobilevehiclesproductlist li {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .mobilevehiclesproductlist .cartextbox {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: center;
-  }
+.mobilevehiclesproductlist li a img {
+  width: 100%; /* 이미지 사이즈 조정 */
+  height: auto;
+}
 
-  /* 텍스트 박스 공통 사용 */
-  .abox {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
+.mobilevehiclesproductlist .cartextbox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+/* 텍스트 박스 공통 사용 */
+.abox {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cybertruckabox {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.abox > a {
+  color: #7d7d7d !important;
+  text-decoration: underline !important;
+}
+
+.cybertruckabox > a {
+  color: #7d7d7d !important;
+  text-decoration: underline !important;
+}
+
+.mobilevehiclesproductlist li a {
+  margin-top: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #333;
+}
+
+.mobilevehiclesproductlist li a:hover {
+  text-decoration: underline;
+}
+
+.mobilevehiclesproductlist li a {
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.mobilevehiclesproductlist li p a:hover {
+  text-decoration: underline;
+}
+
+.mobilevehiclesproductlist > .info-box {
+  list-style: none;
+  padding-top: 16px;
+  margin: 0;
+}
+
+/* 모바일 메뉴 > 충전 서브메뉴  */
+.mobilemenu.open .chargingssub.show {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chargingsub {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  left: 0;
+}
+
+.mobilechargingproductlist {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+@media screen and (max-width: 900px) {
+  .mobilechargingproductlist {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
     gap: 16px;
+    height: 100%;
   }
+}
 
-  .cybertruckabox {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .abox > a {
-    color: #7d7d7d !important;
-    text-decoration: underline !important;
-  }
-
-  .cybertruckabox > a {
-    color: #7d7d7d !important;
-    text-decoration: underline !important;
-  }
-
-  .mobilevehiclesproductlist li a {
-    margin-top: 8px;
-    font-size: 14px;
-    text-decoration: none;
-    color: #333;
-  }
-
-  .mobilevehiclesproductlist li a:hover {
-    text-decoration: underline;
-  }
-
-  .mobilevehiclesproductlist li a {
-    color: #333;
-    font-weight: bold;
-    text-decoration: none;
-  }
-
-  .mobilevehiclesproductlist li p a:hover {
-    text-decoration: underline;
-  }
-
-  .mobilevehiclesproductlist > .info-box {
-    list-style: none;
-    padding-top: 16px;
-    margin: 0;
-  }
-
-  /* 모바일 메뉴 > 충전 서브메뉴  */
-  .mobilemenu.open .chargingssub.show {
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .chargingsub {
+@media screen and (max-width: 600px) {
+  .mobilecharginglistbox {
     display: flex;
     flex-direction: column;
     width: 100%;
-    left: 0;
+
+    padding: 0 28px;
   }
 
   .mobilechargingproductlist {
-    height: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr); /* 두 개의 열을 50%씩 배치 */
+    grid-template-rows: repeat(2, auto); /* 두 개의 줄을 자동 높이로 설정 */
+    max-height: 367px; /* 최대 높이 설정 */
+    gap: 16px; /* 항목 간 수직, 수평 간격 설정 */
+    padding: 32px 0 24px; /* 위아래 여백 설정 */
+  }
+
+  .mobilechargingproductlist li {
+    display: flex;
+    flex-direction: row; /* 이미지와 텍스트를 가로로 배치 */
+    height: 175.78px; /* li의 높이를 적절히 조정 */
+    padding: 0;
+  }
+
+  .mobilechargingproductlist li img {
+    width: 100%; /* 이미지의 너비를 50%로 설정 */
+    height: auto; /* 부모 크기에 맞추기 */
+    max-width: 220px; /* 이미지의 최대 너비 조정 */
+    max-height: 123px; /* 이미지의 최대 높이 조정 */
+  }
+
+  .mobilechargingproductlist li img a {
+    width: 100%;
+    height: auto;
+  }
+
+  .mobilechargingproductlist li .cartextbox {
+    display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 32px 0;
-    border-bottom: 1px solid #e0e0e0;
+    padding-left: 10px;
+    font-size: 12px; /* 텍스트 크기 축소 */
+    width: 50%; /* 텍스트 너비 설정 */
   }
 
-  @media screen and (max-width: 900px) {
-    .mobilechargingproductlist {
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, auto);
-      gap: 16px;
-      height: 100%;
-    }
+  .cartextbox p {
+    font-size: 17px; /* 텍스트 크기 설정 */
+    color: black;
   }
 
-  @media screen and (max-width: 600px) {
-    .mobilecharginglistbox {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-
-      padding: 0 28px;
-    }
-
-    .mobilechargingproductlist {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 두 개의 열을 50%씩 배치 */
-      grid-template-rows: repeat(2, auto); /* 두 개의 줄을 자동 높이로 설정 */
-      max-height: 367px; /* 최대 높이 설정 */
-      gap: 16px; /* 항목 간 수직, 수평 간격 설정 */
-      padding: 32px 0 24px; /* 위아래 여백 설정 */
-    }
-
-    .mobilechargingproductlist li {
-      display: flex;
-      flex-direction: row; /* 이미지와 텍스트를 가로로 배치 */
-      height: 175.78px; /* li의 높이를 적절히 조정 */
-      padding: 0;
-    }
-
-    .mobilechargingproductlist li img {
-      width: 100%; /* 이미지의 너비를 50%로 설정 */
-      height: auto; /* 부모 크기에 맞추기 */
-      max-width: 220px; /* 이미지의 최대 너비 조정 */
-      max-height: 123px; /* 이미지의 최대 높이 조정 */
-    }
-
-    .mobilechargingproductlist li img a {
-      width: 100%;
-      height: auto;
-    }
-
-    .mobilechargingproductlist li .cartextbox {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-left: 10px;
-      font-size: 12px; /* 텍스트 크기 축소 */
-      width: 50%; /* 텍스트 너비 설정 */
-    }
-
-    .cartextbox p {
-      font-size: 17px; /* 텍스트 크기 설정 */
-      color: black;
-    }
-
-    .cartextbox .abox {
-      font-size: 12px; /* 텍스트 크기 설정 */
-      color: #333;
-      text-decoration: none;
-    }
-
-    .cybertruckabox {
-      font-size: 12px;
-      color: #333;
-      text-decoration: none;
-      justify-content: center; /* 좌측 정렬 */
-    }
-
-    /* 스크롤바 숨기기 */
-    .mobilechargingproductlist::-webkit-scrollbar {
-      display: none;
-    }
+  .cartextbox .abox {
+    font-size: 12px; /* 텍스트 크기 설정 */
+    color: #333;
+    text-decoration: none;
   }
 
-  @media screen and (max-width: 450px) {
-    .mobilechargingproductlist {
-      display: grid;
-      grid-template-columns: 1fr;
-      max-height: 304px; /* 최대 높이를 패딩 포함 360px로 설정 */
-      gap: 16px; /* 항목 간 간격 */
-      padding: 32px 0 24px; /* 상하좌우 여백 */
-    }
+  .cybertruckabox {
+    font-size: 12px;
+    color: #333;
+    text-decoration: none;
+    justify-content: center; /* 좌측 정렬 */
+  }
 
-    .mobilechargingproductlist li {
-      display: flex;
-      flex-direction: row !important;
-      align-items: center;
-      height: 84px; /* li의 높이 조정 */
-      padding: 0; /* 간격 없앰 */
-    }
+  /* 스크롤바 숨기기 */
+  .mobilechargingproductlist::-webkit-scrollbar {
+    display: none;
+  }
+}
 
-    .mobilechargingproductlist li #chargingimg {
-      width: 50%; /* 이미지의 너비를 50%로 설정 */
-      height: auto; /* 이미지 높이를 자동으로 조정 */
-    }
+@media screen and (max-width: 450px) {
+  .mobilechargingproductlist {
+    display: grid;
+    grid-template-columns: 1fr;
+    max-height: 304px; /* 최대 높이를 패딩 포함 360px로 설정 */
+    gap: 16px; /* 항목 간 간격 */
+    padding: 32px 0 24px; /* 상하좌우 여백 */
+  }
 
-    .mobilechargingproductlist li #chargingimg img {
-      max-width: 160px; /* 이미지 최대 너비 설정 */
-      max-height: 90px; /* 이미지 최대 높이 설정 */
-    }
+  .mobilechargingproductlist li {
+    display: flex;
+    flex-direction: row !important;
+    align-items: center;
+    height: 84px; /* li의 높이 조정 */
+    padding: 0; /* 간격 없앰 */
+  }
 
-    .mobilechargingproductlist li .cartextbox {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-left: 10px;
-      font-size: 12px; /* 텍스트 크기 축소 */
-      width: 50%; /* 이미지 너비를 지정 */
-      text-align: left; /* 텍스트 좌측 정렬 */
-      align-items: flex-start; /* 텍스트 좌측 정렬을 위한 flex 속성 추가 */
-    }
-    .cartextbox p {
-      font-size: 17px; /* 텍스트 크기 줄임 */
-      color: black;
-      text-align: left; /* 설명 텍스트 좌측 정렬 */
-    }
+  .mobilechargingproductlist li #chargingimg {
+    width: 50%; /* 이미지의 너비를 50%로 설정 */
+    height: auto; /* 이미지 높이를 자동으로 조정 */
+  }
 
-    .cartextbox .abox {
-      font-size: 12px; /* 차량 이름 및 버튼 크기 줄임 */
-      color: #333;
-      text-decoration: none;
-      justify-content: flex-start !important;
-      text-align: left; /* 링크 텍스트 좌측 정렬 */
-    }
+  .mobilechargingproductlist li #chargingimg img {
+    max-width: 160px; /* 이미지 최대 너비 설정 */
+    max-height: 90px; /* 이미지 최대 높이 설정 */
+  }
 
-    .cybertruckabox {
-      font-size: 12px; /* 차량 이름 및 버튼 크기 줄임 */
-      color: #333;
-      text-decoration: none;
-      justify-content: flex-start !important;
-    }
+  .mobilechargingproductlist li .cartextbox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    font-size: 12px; /* 텍스트 크기 축소 */
+    width: 50%; /* 이미지 너비를 지정 */
+    text-align: left; /* 텍스트 좌측 정렬 */
+    align-items: flex-start; /* 텍스트 좌측 정렬을 위한 flex 속성 추가 */
+  }
+  .cartextbox p {
+    font-size: 17px; /* 텍스트 크기 줄임 */
+    color: black;
+    text-align: left; /* 설명 텍스트 좌측 정렬 */
+  }
 
-    .cartextbox a:hover {
-      text-decoration: underline; /* 링크 호버시 밑줄 추가 */
-    }
+  .cartextbox .abox {
+    font-size: 12px; /* 차량 이름 및 버튼 크기 줄임 */
+    color: #333;
+    text-decoration: none;
+    justify-content: flex-start !important;
+    text-align: left; /* 링크 텍스트 좌측 정렬 */
+  }
 
-    /* 스크롤바 숨기기 */
-    .mobilechargingproductlist::-webkit-scrollbar {
-      display: none; /* 스크롤바 숨기기 */
-    }
+  .cybertruckabox {
+    font-size: 12px; /* 차량 이름 및 버튼 크기 줄임 */
+    color: #333;
+    text-decoration: none;
+    justify-content: flex-start !important;
+  }
+
+  .cartextbox a:hover {
+    text-decoration: underline; /* 링크 호버시 밑줄 추가 */
+  }
+
+  /* 스크롤바 숨기기 */
+  .mobilechargingproductlist::-webkit-scrollbar {
+    display: none; /* 스크롤바 숨기기 */
   }
 
   .mobilechargingproductlist li {
