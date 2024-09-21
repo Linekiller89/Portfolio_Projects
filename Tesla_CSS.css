@@ -3,6 +3,7 @@
 html,
 body {
   overflow-x: hidden;
+  margin: 0;
 }
 
 body {
@@ -103,21 +104,87 @@ header {
   display: flex;
   align-items: center;
   height: 100%;
-  padding-left: 28px;
+  padding-left: 32px;
   background-color: transparent;
 }
 
 .logobox a {
   display: flex;
   align-items: center;
-  height: 100%;
+  width: 104px;
+  height: 24px;
+  padding: 0 16px;
   font-size: 0px;
 }
 
 .logobox a > img {
-  width: 100px;
+  width: 120px;
   height: 24px;
   filter: brightness(0) invert(1); /* 흰색으로 기본 설정 */
+}
+
+/* 메뉴박스 */
+.menubox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100%; */
+}
+
+.menubox > li {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.menubox > li > button {
+  border: 1px solid transparent;
+  background-color: transparent;
+  height: 32px;
+  width: 100%;
+  padding: 4px 16px;
+  font: bold 14px "Inter", sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.menubox > li > button > span {
+  color: white; /* 기본적으로 흰색 */
+  border: none;
+  text-decoration: none;
+}
+
+/* 유틸 박스 */
+.utilbox {
+  height: 100%;
+  padding-right: 32px;
+  justify-content: center;
+}
+
+.utilnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding-right: 32px;
+}
+
+.utilnav > li {
+  font-size: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.utilnav > li > a > img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1); /* 흰색 기본 설정 */
+}
+
+.utilnav > .user {
+  margin-right: 16px;
 }
 
 /* whitebox 관련 */
@@ -150,63 +217,6 @@ header {
   z-index: 100;
 }
 
-/* 유틸 박스 */
-.utilbox {
-  display: flex;
-  height: 100%;
-  justify-content: center;
-}
-
-.utilnav {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding-right: 32px;
-  font-size: 0px;
-}
-
-.utilnav > li {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.utilnav > li > a > img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1); /* 흰색 기본 설정 */
-}
-
-/* 메뉴박스 */
-.menubox {
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-
-.menubox > li {
-  display: flex;
-  height: 100%;
-  align-items: center;
-}
-
-.menubox > li > button {
-  border: 1px solid transparent;
-  background-color: transparent;
-  height: 32px;
-  width: 100%;
-  padding: 4px 16px;
-  font: bold 14px "Inter", sans-serif;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.menubox > li > button > span {
-  color: white; /* 기본적으로 흰색 */
-  border: none;
-  text-decoration: none;
-}
-
 /* 서브메뉴 */
 .submenu {
   visibility: hidden;
@@ -215,7 +225,7 @@ header {
   top: 56px;
   left: 0;
   width: 100%;
-  padding: 0 28px 48px;
+  padding: 0 28px;
   background-color: white;
   transition: opacity 0.5s ease, height 0.5s ease;
   z-index: 15;
@@ -232,27 +242,28 @@ header {
 .vehicleslistbox {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
-  width: 94%;
+  padding: 64px 0 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
+  max-width: 1799px;
   height: 100%;
   box-sizing: border-box;
   margin: 0 auto; /* 수평 중앙 정렬 */
 }
 
-/* vehiclesproductlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
 .vehiclesproductlist {
-  grid-column: 2 / span 8;
+  grid-column: 2 / span 7;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4개의 열로 설정 */
-  grid-template-rows: repeat(2, 1fr); /* 2줄로 설정 */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 16px;
+  align-items: center;
+  justify-content: center;
 }
 
 /* vehiclesproductlist 내부 항목 스타일 */
 .vehiclesproductlist li {
   display: flex;
   max-width: 220px;
-  height: 175px;
+  max-height: 175px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -296,27 +307,33 @@ header {
   border: 1px solid red;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
-  width: 94%;
+  padding: 64px 0 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
+  max-width: 1799px;
+  width: 100%;
   height: 100%;
   box-sizing: border-box;
   margin: 0 auto; /* 수평 중앙 정렬 */
 }
 
 .chargingproductlist {
+  border: 1px solid blue;
   display: grid;
+  grid-column: 3 / span 5;
   grid-template-columns: repeat(3, 1fr);
-  padding: 64px 48px 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
-  width: 94%;
-  height: 100%;
-  box-sizing: border-box;
-  margin: 0 auto; /* 수평 중앙 정렬 */
+  height: 175px;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
 }
 
 .chargingproductlist li {
+  border: 1px solid red;
   display: flex;
+  max-width: 220px;
+  max-height: 175px;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .chargingproductlist li a img {
@@ -325,8 +342,10 @@ header {
 }
 
 .chargingproductlist .cartextbox {
-  margin-top: 16px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .chargingproductlist .cartextbox p {
@@ -349,43 +368,19 @@ header {
   text-decoration: underline;
 }
 
-/* chargingproductlist를 그리드 2번째 칸부터 8번째 칸까지 차지하도록 설정 */
-.chargingproductlist {
-  border: 1px solid blue;
-  padding: 16px;
-  display: grid;
-  grid-column: 1 / span 7;
-}
-
 /* chargingproductlist 내부 항목 스타일 */
-.chargingproductlist li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#subcharging {
-  grid-column: 3 / span 2;
-}
-
-#homecharging {
-  grid-column: 5 / span 1;
-}
-
-#supercharging {
-  grid-column: 6 / span 2;
-}
 
 .charging-vertical-line {
   grid-column: 8 / span 1;
   border-left: 1px solid #e0e0e0;
-  height: 100%;
+  max-height: 175px;
   justify-self: center;
 }
 
 .charging-info-box {
   grid-column: 9 / span 2;
   padding: 16px;
+  max-height: 175px;
   background-color: white;
 }
 
