@@ -65,11 +65,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (submenu) {
         if (item.classList.contains("vehicles")) {
-          whiteboxHeight = 552;
+          whiteboxHeight = 450;
         } else if (item.classList.contains("charging") || item.classList.contains("discover")) {
-          whiteboxHeight = 360;
+          whiteboxHeight = 314;
         } else if (item.classList.contains("shop")) {
-          whiteboxHeight = 336;
+          whiteboxHeight = 288;
         }
 
         // 기존에 열려있는 서브메뉴를 닫기

@@ -225,7 +225,7 @@ header {
   top: 56px;
   left: 0;
   width: 100%;
-  padding: 0 28px;
+  padding: 0 28px 48px;
   background-color: white;
   transition: opacity 0.5s ease, height 0.5s ease;
   z-index: 15;
@@ -238,13 +238,19 @@ header {
 }
 
 /* Vehicles 메뉴 스타일 */
+.vehiclessub {
+  max-height: 450px; /* 최대 높이 설정 */
+  overflow-y: auto; /* 넘어가는 부분을 스크롤로 표시 */
+  transition: max-height 0.3s ease-in-out;
+}
+
 /* 그리드 레이아웃 */
 .vehicleslistbox {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   padding: 64px 0 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
   max-width: 1799px;
-  height: 100%;
+  max-height: 368px;
   box-sizing: border-box;
   margin: 0 auto; /* 수평 중앙 정렬 */
 }
@@ -282,7 +288,7 @@ header {
 }
 
 .vehiclesproductlist .cartextbox p {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 700;
   color: black;
 }
@@ -292,11 +298,12 @@ header {
   display: flex;
   gap: 16px;
   justify-content: center;
+  bottom: 0;
 }
 
 .vehiclesproductlist .abox a,
 .vehiclesproductlist .cybertruckabox a {
-  font-size: 16px;
+  font-size: 14px;
   color: #5c5d61;
   text-decoration: underline;
 }
@@ -416,23 +423,28 @@ header {
 
 /* Shop 메뉴 */
 .shoplistbox {
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  padding: 64px 0 16px; /* 상단 64px, 하단 16px, 좌우 48px 여백 적용 */
+  max-width: 1799px;
+  max-height: 368px;
+  box-sizing: border-box;
+  margin: 0 auto; /* 수평 중앙 정렬 */
 }
 
 .shopproductlist {
+  grid-column: 3 / span 8;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  padding: 64px 48px 16px;
-  width: 94%;
-  height: 100%;
-  box-sizing: border-box;
-  margin: 0 auto;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
 }
 
 .shopproductlist li {
   display: flex;
+  max-width: 220px;
+  max-height: 175px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -458,27 +470,38 @@ header {
   color: black;
 }
 
-#chargingacc {
-  grid-column: 3 / span 2;
-}
-
-#caracc {
-  grid-column: 5 / span 2;
-}
-
-#clothingacc {
-  grid-column: 7 / span 2;
-}
-
-#lifestyleacc {
-  grid-column: 9 / span 2;
-}
-
 /* info-box 스타일 */
 .info-box {
-  grid-column: 10 / span 3;
-  padding: 16px;
+  grid-column: 10 / span 2;
+  padding: 8px 12px;
+  height: 50%;
   background-color: white;
+}
+
+.info-list > li > a {
+  display: block;
+  position: relative;
+  font: 14px "Inter", sans-serif;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #333;
+  text-decoration: none;
+}
+
+.info-list > li > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px; /* 원하는 선 두께 설정 */
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.7s ease; /* 1초 동안 부드럽게 나타나도록 설정 */
+}
+
+.info-list > li > a:hover::after {
+  opacity: 1;
 }
 
 /* 세로선 스타일 */
