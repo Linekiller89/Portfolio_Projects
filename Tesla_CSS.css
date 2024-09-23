@@ -197,7 +197,7 @@ header {
   background-color: white;
   transition: top 0.3s ease-in-out, height 0.3s ease-in-out;
   z-index: 1;
-  opacity: 0;
+  opacity: 1;
 }
 
 .whitebox.mobile {

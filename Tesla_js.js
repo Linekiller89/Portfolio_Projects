@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     item.addEventListener("mouseenter", function () {
       let submenu = item.querySelector(".submenu");
       let whiteboxHeight = headerHeight;
+      whitebox.style.opacity = 1;
 
       if (submenu) {
         if (item.classList.contains("vehicles")) {
@@ -117,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     item.addEventListener("mouseleave", function (event) {
       const relatedTarget = event.relatedTarget;
+
       if (
         !mainHeader.contains(relatedTarget) &&
         !whitebox.contains(relatedTarget) &&
@@ -133,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
           closeWhitebox();
         } else {
           whitebox.style.height = `${headerHeight}px`;
+          whitebox.style.opacity = 0.8;
         }
         hideBlurScreen();
       }
@@ -165,10 +168,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // 스크롤 이벤트 핸들러
   window.addEventListener("scroll", function () {
     const currentScrollY = window.scrollY;
-
     if (currentScrollY > lastScrollY) {
       // 스크롤 다운: 헤더 제거
       mainHeader.classList.add("hidden");
+      whitebox.style.opacity = 0.8;
       if (activeSubmenu) {
         activeSubmenu.classList.remove("show");
         removeAnimationFromSubmenuItems(activeSubmenu);
@@ -178,6 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
       hideBlurScreen();
     } else {
       // 스크롤 업: 헤더와 기본 화이트박스 유지
+      whitebox.style.opacity = 0.8;
       mainHeader.classList.remove("hidden");
       mainHeader.classList.add("scrolled");
       setHeaderColors("black");
