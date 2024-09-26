@@ -1,6 +1,3 @@
-아래는 문서 형식을 올바르게 적용한 Markdown(`.md`) 파일입니다.
-
-````markdown
 # Portfolio Projects
 
 ## Project Overview
@@ -46,8 +43,8 @@
 
    ```bash
    git clone https://github.com/Linekiller89/TeslaClone_Portfolio_Projects.git
+
    ```
-````
 
 2. Navigate to the project directory:
 
@@ -73,4 +70,7 @@ If you have any inquiries regarding my portfolio, feel free to contact me at:
 
 - **Email**: [wkdnfla14@gmail.com](mailto:wkdnfla14@gmail.com)
 
+```
+
+이제 이 내용을 복사하여 `.md` 파일에 붙여넣으면 깔끔하게 마크다운 형식으로 적용될 것입니다.
 ```
