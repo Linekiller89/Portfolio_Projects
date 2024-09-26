@@ -1,3 +1,6 @@
+아래는 문서 형식을 올바르게 적용한 Markdown(`.md`) 파일입니다.
+
+````markdown
 # Portfolio Projects
 
 ## Project Overview
@@ -44,6 +47,7 @@
    ```bash
    git clone https://github.com/Linekiller89/TeslaClone_Portfolio_Projects.git
    ```
+````
 
 2. Navigate to the project directory:
 
@@ -59,8 +63,14 @@
 - 추가적인 기능 및 성능 최적화 계획을 언급합니다.
 - 인터랙티브한 차량 구성 기능과 애니메이션을 추가할 예정입니다.
 
+### 인지된 버그 및 수정 예정 사항
+
+- **버그**: 데스크탑에서 서브메뉴가 열린 상태에서 모바일 사이즈로 창을 줄일 경우, 화이트박스가 확장된 상태로 남아있고 모바일 레이아웃에 맞게 조정되지 않습니다.
+
 ## Contact
 
 If you have any inquiries regarding my portfolio, feel free to contact me at:
 
 - **Email**: [wkdnfla14@gmail.com](mailto:wkdnfla14@gmail.com)
+
+```
