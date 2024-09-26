@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // 기존 코드들은 그대로 유지...
-
   const whitebox = document.querySelector(".whitebox");
   const menuItems = document.querySelectorAll(".menubox > li");
   const headerHeight = 56;
@@ -8,8 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const logo = document.querySelector(".logobox a > img");
   const menuSpans = document.querySelectorAll(".menubox > li > button > span");
   const utilIcons = document.querySelectorAll(".utilnav > li > a > img");
-  const logobox = document.querySelector(".logobox");
-  const utilbox = document.querySelector(".utilbox");
   const blurscreen = document.querySelector(".blurscreen");
   const openmenu = document.querySelector(".openmenu");
   const mobilemenu = document.querySelector(".mobilemenu");

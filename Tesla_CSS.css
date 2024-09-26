@@ -13,43 +13,14 @@ body {
   font-size: 16px;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
   font-size: 1em;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-div,
-p,
-dl,
-body,
-dt,
-dd,
-ul,
-ol,
-li,
-form,
-fieldset,
-blockquote,
-address,
-table,
-thead,
-tbody,
-tfoot,
-tr,
-td,
-caption {
+h1,h2,h3,h4,h5,h6,div,p,dl,body,dt,dd,ul,ol,li,form,fieldset,blockquote,address,table,thead,tbody,tfoot,tr,td,caption {
   margin: 0;
   padding: 0;
 }
+
 
 li {
   list-style: none;
