@@ -12,14 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const closemenu = document.querySelector(".closemenu");
   let lastScrollY = window.scrollY;
   let activeSubmenu = null;
-  let hasAnimated = false; // 애니메이션 동작 여부 확인 변수
+  let hasAnimated = false;
 
   // 서브메뉴 항목 애니메이션 추가 함수
   function addAnimationToSubmenuItems(submenu) {
     const submenuItems = submenu.querySelectorAll("li");
     submenuItems.forEach((item, index) => {
       item.style.transitionDelay = `${index * 0.1}s`; // 각 li 항목에 시간차 추가
-      item.classList.add("fade-in"); // 애니메이션 클래스 추가
+      item.classList.add("fade-in");
     });
   }
 
@@ -91,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
           whiteboxHeight = 288;
         }
 
-        // 기존에 열려있는 서브메뉴를 닫기
         if (activeSubmenu && activeSubmenu !== submenu) {
           activeSubmenu.classList.remove("show");
           activeSubmenu.style.height = "0px";
@@ -99,10 +98,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         openWhitebox(whiteboxHeight);
 
-        // 이전 서브메뉴와 다르거나 애니메이션이 아직 실행되지 않았을 경우
         if (activeSubmenu !== submenu || !hasAnimated) {
           addAnimationToSubmenuItems(submenu);
-          hasAnimated = true; // 애니메이션이 실행된 상태로 변경
+          hasAnimated = true;
         }
 
         submenu.classList.add("show");
@@ -125,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
           activeSubmenu.classList.remove("show");
           activeSubmenu.style.height = "0px";
           activeSubmenu = null;
-          hasAnimated = false; // 서브메뉴가 닫히면 애니메이션 상태 초기화
+          hasAnimated = false;
         }
         if (window.scrollY === 0) {
           closeWhitebox();
@@ -150,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
         submenu.classList.remove("show");
         submenu.style.height = "0px";
         activeSubmenu = null;
-        removeAnimationFromSubmenuItems(submenu); // 애니메이션 상태 초기화
+        removeAnimationFromSubmenuItems(submenu);
         if (window.scrollY === 0) {
           closeWhitebox();
         } else {
@@ -165,7 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", function () {
     const currentScrollY = window.scrollY;
     if (currentScrollY > lastScrollY) {
-      // 스크롤 다운: 헤더 제거
       mainHeader.classList.add("hidden");
       whitebox.style.opacity = 0.8;
       if (activeSubmenu) {
@@ -176,7 +173,6 @@ document.addEventListener("DOMContentLoaded", function () {
       closeWhitebox();
       hideBlurScreen();
     } else {
-      // 스크롤 업: 헤더와 기본 화이트박스 유지
       whitebox.style.opacity = 0.8;
       mainHeader.classList.remove("hidden");
       mainHeader.classList.add("scrolled");
@@ -186,7 +182,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     if (currentScrollY === 0) {
-      // 최상단 도달: 화이트박스 제거
       if (!activeSubmenu) {
         closeWhitebox();
         mainHeader.classList.remove("scrolled");
@@ -225,7 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         submenu.insertBefore(mobilesubheader, submenu.firstChild);
 
-        // 뒤로가기 버튼 클릭 시 show 클래스 제거 및 뒤로가기 버튼 제거
         backButton.addEventListener("click", function () {
           submenu.classList.remove("show");
           submenu.removeChild(mobilesubheader);
@@ -240,16 +234,15 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".menubox").classList.toggle("active");
   });
 
-  // 메뉴 닫기 버튼 클릭 시 메뉴 닫기
+  // 메뉴 닫기 버튼 클릭 시
   closemenu.addEventListener("click", function () {
     const openMobileSubmenu = document.querySelector(".mobile.show");
 
-    mobilemenu.classList.remove("open"); // 모바일 메뉴 닫기
+    mobilemenu.classList.remove("open");
     if (openMobileSubmenu) {
       openMobileSubmenu.classList.remove("show");
       openMobileSubmenu.removeChild(openMobileSubmenu.firstChild);
-      whitebox.style.height = `${headerHeight}px`; // whitebox의 높이 조정
-      document.querySelector(".menubox").classList.toggle("active"); // 메뉴박스의 활성화 상태 토글
     }
+    document.querySelector(".menubox").classList.toggle("active");
   });
 });
