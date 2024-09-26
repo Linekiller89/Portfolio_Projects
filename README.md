@@ -1,6 +1,4 @@
-
-
-````
+```markdown
 # Portfolio Projects
 
 ## Project Overview
@@ -71,5 +69,4 @@
 If you have any inquiries regarding my portfolio, feel free to contact me at:
 
 - **Email**: [wkdnfla14@gmail.com](mailto:wkdnfla14@gmail.com)
-````
-
+```
