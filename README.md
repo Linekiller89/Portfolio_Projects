@@ -47,7 +47,6 @@
    ```bash
    git clone https://github.com/Linekiller89/TeslaClone_Portfolio_Projects.git
    ```
-````
 
 2. Navigate to the project directory:
 
